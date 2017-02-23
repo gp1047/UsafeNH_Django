@@ -63,12 +63,12 @@
 
 	<script type="text/javascript">
 
-	document.addEventListener("deviceready", init, false);
+	//document.addEventListener("deviceready", init, false);
 	
-	function init() {
+	//function init() {
 		var fields = [ "name","phoneNumbers"];
 		navigator.contacts.find(fields, onSuccess, onError);
-	}
+	//}
 	
 	function onSuccess(c) {
 		console.log(c);

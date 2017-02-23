@@ -56,9 +56,12 @@
 	<script type="text/javascript">
 
 	document.addEventListener("deviceready", init, false);
+	alert('in alert 1!');
 	function init() {
+		alert('in init 1!');
 		var fields = [ "name","phoneNumbers"];
 		navigator.contacts.find(fields, onSuccess, onError);
+		alert('in init 2!');
 	};
 	function onSuccess(c) {
 		alert('in success!');
@@ -118,6 +121,7 @@
 			console.log("Clicked");
 		}
 	});
+	alert('in alert 2!');
 	</script>
    <script>
      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

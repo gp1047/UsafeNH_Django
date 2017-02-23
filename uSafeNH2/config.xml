@@ -7,6 +7,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
+	<preference name="SplashScreen" value="none"/>
 	<icon src="icon.png"/>
     <content src="welcome.html" />
 	<plugin name="cordova-plugin-contacts" spec="2.0.1" />

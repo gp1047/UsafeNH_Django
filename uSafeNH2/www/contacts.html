@@ -54,10 +54,7 @@
   <script type="text/javascript">
 
   document.addEventListener("deviceready", init, false);
-  function init() {
-    var fields = [ "name","phoneNumbers"];
-    navigator.contacts.find(fields, onSuccess, onError);
-  };
+
   function onSuccess(c) {
     mobileDiv = document.querySelector("#mobile");
 
@@ -76,6 +73,11 @@
   };
   function onError(contactError) {
     console.log(contactError);
+  };
+  
+  function init() {
+    var fields = [ "name","phoneNumbers"];
+    navigator.contacts.find(fields, onSuccess, onError);
   };
   $(document).on("click","#link",function(){
     // this gets the text of the link clicked and its text

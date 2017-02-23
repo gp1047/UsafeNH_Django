@@ -59,6 +59,7 @@
 	document.addEventListener("deviceready", init, false);
 	
 	function init() {
+		alert('in init!');
 		var fields = [ "name","phoneNumbers"];
 		navigator.contacts.find(fields, onSuccess, onError);
 	}

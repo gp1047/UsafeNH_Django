@@ -50,6 +50,24 @@
         <icon height="87" platform="ios" src="res/icon/ios/icon-small@3x.png" width="87" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+		<config-file target="*-Info.plist" parent="NSPhotoLibraryUsageDescription">
+			<string>Muvzi use</string>
+		</config-file>
+		<config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+			<string>Muvzi use</string>
+		</config-file>
+		<config-file target="*-Info.plist" parent="NSMicrophoneUsageDescription">
+			<string>Muvzi use</string>
+		</config-file>
+		<config-file target="*-Info.plist" parent="NSContactsUsageDescription">
+			<string>Muvzi use</string>
+		</config-file>
+		<config-file target="*-Info.plist" parent="NSCalendarsUsageDescription">
+			<string>Muvzi use</string>
+		</config-file>
+		<config-file target="*-Info.plist" parent="NSBluetoothPeripheralUsageDescription">
+			<string>Muvzi use</string>
+		</config-file>
     </platform>
     <engine name="ios" spec="~4.3.1" />
     <engine name="android" spec="~6.1.2" />

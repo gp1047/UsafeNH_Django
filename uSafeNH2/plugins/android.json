@@ -12,6 +12,15 @@
         },
         "cordova-plugin-contacts": {
             "PACKAGE_NAME": "com.unh.usafenh"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.unh.usafenh"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.unh.usafenh"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.unh.usafenh"
         }
     },
     "dependent_plugins": {

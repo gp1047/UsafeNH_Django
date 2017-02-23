@@ -71,6 +71,8 @@
 	}
 	
 	function onSuccess(c) {
+		console.log(c);
+		alert('in success!');
 		mobileDiv = document.querySelector("#mobile");
 		
 		 c = c.sort(cSort);
@@ -90,6 +92,7 @@
 
 	function onError(contactError) {
 		alert('onError!');
+		console.log(contactError);
 	};
 
 	$(document).on("click","#link",function(){

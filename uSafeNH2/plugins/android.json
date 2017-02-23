@@ -21,6 +21,9 @@
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.unh.usafenh"
+        },
+        "cordova-custom-config": {
+            "PACKAGE_NAME": "com.unh.usafenh"
         }
     },
     "dependent_plugins": {

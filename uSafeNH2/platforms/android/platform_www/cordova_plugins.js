@@ -119,7 +119,8 @@ module.exports.metadata =
     "cordova-plugin-contacts": "2.2.1",
     "cordova-plugin-dialogs": "1.3.1",
     "cordova-plugin-inappbrowser": "1.6.1",
-    "cordova-plugin-statusbar": "2.2.1"
+    "cordova-plugin-statusbar": "2.2.1",
+    "cordova-custom-config": "3.1.2"
 };
 // BOTTOM OF METADATA
 });

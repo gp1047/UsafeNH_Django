@@ -54,33 +54,39 @@
 	app.initialize();
   </script>
   <script type="text/javascript">
-
-  document.addEventListener("deviceready", init, false);
-
-  function onSuccess(c) {
-    mobileDiv = document.querySelector("#mobile");
-
-    c = c.sort(cSort);
-    /* Retriving phoneNumbers */
-    for(var i=0, len=c.length; i<len; i++) {
-      if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
-        mobileDiv.innerHTML += "<a class='list-item' id='link'>"+c[i].name.formatted+"<br>"+c[i].phoneNumbers[0].value+"</a>";
-      }
-    }
-  };
-  var cSort = function(a, b) {
-    var aName = a.name.givenName + ' ' + a.name.familyName;
-    var bName = b.name.givenName + ' ' + a.name.familyName;
-    return aName < bName ? -1 : (aName == bName ? 0 : 1);
-  };
-  function onError(contactError) {
-    console.log(contactError);
-  };
   
-  function init() {
-    var fields = [ "name","phoneNumbers"];
-    navigator.contacts.find(fields, onSuccess, onError);
-  };
+  navigator.contacts.pickContact(function(contact){
+        console.log('The following contact has been selected:' + JSON.stringify(contact));
+    },function(err){
+        console.log('Error: ' + err);
+    });
+
+  <!-- document.addEventListener("deviceready", init, false); -->
+
+  <!-- function onSuccess(c) { -->
+    <!-- mobileDiv = document.querySelector("#mobile"); -->
+
+    <!-- c = c.sort(cSort); -->
+    <!-- /* Retriving phoneNumbers */ -->
+    <!-- for(var i=0, len=c.length; i<len; i++) { -->
+      <!-- if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) { -->
+        <!-- mobileDiv.innerHTML += "<a class='list-item' id='link'>"+c[i].name.formatted+"<br>"+c[i].phoneNumbers[0].value+"</a>"; -->
+      <!-- } -->
+    <!-- } -->
+  <!-- }; -->
+  <!-- var cSort = function(a, b) { -->
+    <!-- var aName = a.name.givenName + ' ' + a.name.familyName; -->
+    <!-- var bName = b.name.givenName + ' ' + a.name.familyName; -->
+    <!-- return aName < bName ? -1 : (aName == bName ? 0 : 1); -->
+  <!-- }; -->
+  <!-- function onError(contactError) { -->
+    <!-- console.log(contactError); -->
+  <!-- }; -->
+  
+  <!-- function init() { -->
+    <!-- var fields = [ "name","phoneNumbers"]; -->
+    <!-- navigator.contacts.find(fields, onSuccess, onError); -->
+  <!-- }; -->
   $(document).on("click","#link",function(){
     // this gets the text of the link clicked and its text
     var link = $(this).text();

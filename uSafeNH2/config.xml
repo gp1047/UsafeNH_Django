@@ -7,7 +7,6 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <preference name="SplashScreen" value="none" />
     <icon src="icon.png" />
     <content src="welcome.html" />
     <plugin name="cordova-plugin-contacts" spec="2.0.1" />
@@ -51,9 +50,6 @@
         <icon height="87" platform="ios" src="res/icon/ios/icon-small@3x.png" width="87" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-		<config-file parent="NSContactsUsageDescription" target="*info.plist">
-			<string>Needed to access contacts</string>
-		</config-file>
     </platform>
     <engine name="ios" spec="~4.3.1" />
     <engine name="android" spec="~6.1.2" />

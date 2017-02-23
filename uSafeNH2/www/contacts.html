@@ -61,6 +61,7 @@
 		alert('in init!');
 		var fields = [ "name","phoneNumbers"];
 		navigator.contacts.find(fields, onSuccess, onError);
+	    alert('in init 2!');
 	}
 	
 	function onSuccess(c) {

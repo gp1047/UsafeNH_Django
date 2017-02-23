@@ -50,9 +50,6 @@
         <icon height="87" platform="ios" src="res/icon/ios/icon-small@3x.png" width="87" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-		<config-file parent="NSContactsUsageDescription" target="*info.plist">
-		  <string>Easily invite your friends</string>
-		</config-file>
     </platform>
     <engine name="ios" spec="~4.3.1" />
     <engine name="android" spec="~6.1.2" />

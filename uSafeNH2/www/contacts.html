@@ -55,7 +55,7 @@
 	<script type="text/javascript">
 
 	
-	<!-- function onSuccess(c) { -->
+	function onSuccess(c) {
 		<!-- mobileDiv = document.querySelector("#mobile"); -->
 		
 		 <!-- c = c.sort(cSort); -->
@@ -65,7 +65,7 @@
 				<!-- mobileDiv.innerHTML += "<a class='list-item' id='link'>"+c[i].name.formatted+"<br>"+c[i].phoneNumbers[0].value+"</a>"; -->
 			<!-- } -->
 		<!-- } -->
-	<!-- }; -->
+	};
 	
 	<!-- var cSort = function(a, b) { -->
 	  <!-- var aName = a.name.givenName + ' ' + a.name.familyName; -->
@@ -73,17 +73,17 @@
 	  <!-- return aName < bName ? -1 : (aName == bName ? 0 : 1); -->
 	<!-- };  -->
 
-	<!-- function onError(contactError) { -->
-		<!-- alert('onError!'); -->
-	<!-- }; -->
+	function onError(contactError) {
+		alert('onError!');
+	};
 
-	<!-- document.addEventListener("deviceready", init, false); -->
+	document.addEventListener("deviceready", init, false);
 	
-	<!-- // find all contacts with 'Bob' in any name field -->
-	 <!-- function init() { -->
-		<!-- var fields = [ "name","phoneNumbers"]; -->
-		<!-- navigator.contacts.find(fields, onSuccess, onError); -->
-	<!-- } -->
+	// find all contacts with 'Bob' in any name field
+	 function init() {
+		var fields = [ "name","phoneNumbers"];
+		navigator.contacts.find(fields, onSuccess, onError);
+	}
 	
 	
 

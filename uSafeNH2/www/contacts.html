@@ -76,6 +76,7 @@
 	function onError(contactError) {
 		alert('onError!');
 		console.log(contactError);
+		localStorage.setItem("contactCrash",contactError);
 	};
 
 	document.addEventListener("deviceready", init, false);

@@ -39,7 +39,7 @@
 
     <!--link rel="stylesheet" type="text/css" href="css/index.css" /-->
 
-    <title>Select a University</title>
+    <title>Select a University - Multiple Schools</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
@@ -49,12 +49,15 @@
 
 <body>
 
-    <!--p id="version">0.0.7</!--p-->
+    <p id="version">0.0.4</p>
+	<a class="back animated fadeInDown" href="index.html"><img src="img/icons/back.png" alt="Back"></a>
     <a class="close animated fadeInDown" href=""><img src="img/icons/close.png" alt="Close"></a>
 
-    <div class="header">
-        <h1 class="animated fadeInDown">Select a School</h1>
-    </div>
+    <div class="header"><h1 class="animated fadeInDown">Select a School</h1></div>
+
+	<script>
+		localStorage.setItem("backPage", "multipleSchools.html");
+	</script>
 
     <div class="wrapper">
       <div class="list offset-140 animated fadeInLeft">
@@ -64,29 +67,30 @@
         <a class="list-item" href="who.html"><h1><span><img src="img/schools/icon-white-mountains.png" alt="School Icon"></span>White Mountains Community</h1></a>
         <a class="list-item" href="who.html"><h1><span><img src="img/schools/icon-saint-anselm.png" alt="School Icon"></span>Saint Anslem</h1></a-->
 
-
-		<script>
-			// if the id storage variable has something in it, and you did not leave off on the multiple schools page, or you clicked a single school, you will go to the welcome screen
-			if (localStorage.getItem("id") != null && localStorage.getItem("clickedMultipleSchools") == "yes")
-				window.location.href = "welcome.html";
-			
-			localStorage.setItem("backPage", "resources.html"); // assume always going to who.html when on index so that multipleschools doesnt appear for one school
-		</script>
-
         <div id="users" ng-controller="AppCtrl">
-
 
           <!--input class="search" placeholder="Search"-->
 
           <ul class="list">
 
-            <li ng-repeat="x in collegeList" ng-cloak>
-				<a class="list-item" id="{{x.collegeID}}" ng-click="getButtonClicked(x.collegeID,x.collegeName)">
+			 <!-- this will show all schools besides unh concord, we want it to display law instead, so that is done below -->
+            <li ng-repeat="x in data" ng-cloak>
+				<a class="list-item" href="resources.html" id="{{x.collegeID}}" onclick="myFunc()" ng-click="getButtonClicked(x.collegeID,x.collegeName)" ng-if="returnSplitted(x.collegeName) == returnSplitted(returnCollegeName())" ng-hide="x.collegeName == 'University of New Hampshire (Law)'" ng-cloak>
 					<h3 class="name">
-						<span><img src="{{x.imagePath}}"  alt="School Icon"></span>{{x.collegeName}}
+						<span><img src="{{x.imagePath}}"  alt="School Icon"></span>{{x.collegeTown}}
 					</h3>
 				</a>
 			</li>
+
+			<!-- this one will only show if it equals university of new hampshire (concord), we want it to display law instead -->
+			<li ng-repeat="x in data" ng-cloak>
+				<a class="list-item" href="resources.html" id="{{x.collegeID}}" onclick="myFunc()" ng-click="getButtonClicked(x.collegeID,x.collegeName)" ng-if="returnSplitted(x.collegeName) == returnSplitted(returnCollegeName())" ng-show="x.collegeName == 'University of New Hampshire (Law)'" ng-cloak>
+					<h3 class="name">
+						<span><img src="{{x.imagePath}}"  alt="School Icon"></span>Law
+					</h3>
+				</a>
+			</li>
+
 
           </ul>
 
@@ -102,24 +106,33 @@
     </script>
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/main.js"></script>
-	<script src="js/angular.min.js"></script>
+	<script src="js/angular.min.js">console.log("executed")</script>
 	<script src="js/displayData.js"></script>
-    <!--script src="js/list.min.js"></script>
-    <script>
-        var options = {
-          valueNames: [ 'name' ]
-        };
+	<script>
+		// if you arrive on the multiple schools page and have not clicked a link on the screen yet, we will say "no" you have not clicked anything
+		localStorage.setItem("clickedMultipleSchools","no");
+		// however, if you do click a link, then we will set the local storage variable to say "yes" i did
+		var myFunc = function () {
+			localStorage.setItem("clickedMultipleSchools","yes");
+		};
+	
+		document.addEventListener("backbutton", onBackKeyDown, false);
 
-        var userList = new List('users', options);
-    </script-->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-84030024-1', 'auto');
-      ga('send', 'pageview');
-    </script>
+		function onBackKeyDown() {
+			window.location.href = ("index.html");
+		}
+		
+		console.log("Return College Name: " + sessionStorage.getItem("collegeName"))
+
+	</script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-84030024-1', 'auto');
+    ga('send', 'pageview');
+  </script>
 
 </body>
 

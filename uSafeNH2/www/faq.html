@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<html ng-app="myModule">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=yes">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+  <!-- Good default declaration:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+  * Enable inline JS: add 'unsafe-inline' to default-src
+  * Enable eval(): add 'unsafe-eval' to default-src
+  * Create your own at http://cspisawesome.com
+-->
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+<!--link rel="stylesheet" type="text/css" href="css/index.css" /-->
+
+<title>FAQ</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,100,700">
+
+</head>
+
+<body ng-controller="AppCtrl">
+
+  <a class="back animated fadeInDown" id="backButton" href="who.html" onclick="myFunction()"><img src="img/icons/back.png" alt="Back"></a>
+  <script type="text/javascript">
+  sessionStorage.setItem("faqBackPage","faq.html");
+
+  // this will bring you back to the last open window only if you came from whatNow. back button conflicted when try to go to multiple back pages
+  var myFunction = function () {
+    if(sessionStorage.getItem("whatNowBackPage") != null)
+    window.history.back();
+  };
+
+  // change back button if you came from who or who-other html page
+  if(sessionStorage.getItem("helpFulAnswersBackPage") == "who-other.html"){
+    sessionStorage.setItem("helpFulAnswersBackPage", "who-other.html");
+    document.getElementById("backButton").href = sessionStorage.getItem("helpFulAnswersBackPage");
+  }
+  else {
+    sessionStorage.setItem("helpFulAnswersBackPage", "who.html");
+    document.getElementById("backButton").href = sessionStorage.getItem("helpFulAnswersBackPage");
+  }
+
+
+  </script>
+
+  <a class="close" href=""><img src="img/icons/close.png" alt="Close"></a>
+
+  <div class="header">
+    <div class="animated fadeInDown">
+      <p id="collegeHeader" ng-repeat="x in data" ng-if="x.collegeID == returnSchool()" ng-cloak>{{x.collegeName}}</p>
+      <h1>Helpful Answers</h1>
+    </div>
+  </div>
+
+  <div class="wrapper">
+
+    <!-- Survivor -->
+    <div class="list offset-160 animated fadeInLeft" id="faq1" style="visibility: hidden;">
+      <button class="question">Was I sexually assaulted?</button>
+      <div class="drop-panel">
+        <p class="answer">The term sexual assault refers to any sexual contact that occurs without explicit consent. Sexual assault can take many forms, but it is never the victim’s fault. Forms of sexual assault include: penetration of the victim’s body (also known as rape), attempted rape, forcing a victim to perform sexual acts, and fondling or unwanted sexual touching.</p>
+      </div>
+
+      <button class="question">What is <u>consent?</u></button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Definition:</b><br>
+          Consent is two people (or more) deciding together to do the same thing, at the same time, in the same way, with each other, without coercion, intimidation, manipulation, physical force, power disparity, mental illness, incapacitation, intoxication, and/or threats.
+
+          <br><br><b>Active consent:</b><br>
+          Consent is active, not passive. There must always be active consent on both sides. A person who consents has the right to change their mind at any point in time. If they do, the sexual activity must stop immediately.
+
+          <br><br><b>Legal age of consent:</b><br>
+          In New Hampshire, the legal age of consent is 16.
+        </p>
+      </div>
+
+      <button class="question">Can sexual assault be committed by an acquaintance, friend, or romantic partner?</button>
+      <div class="drop-panel">
+        <p class="answer">Yes. You always have the right to decide what sexual contact you consent to, with whom, and when you are comfortable with it. Active consent on a prior occasion does <u>not</u> provide consent for future contact. Someone who the victim knows perpetrates approximately 2/3 of all sexual assaults. <br><br>[SOURCE: U.S. Department of Justice, National Crime Victimization Study: 2009-2013]</p>
+      </div>
+
+      <button class="question">I was just sexually assaulted. What do I do?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Go to a safe place:</b><br>
+          It is important that you are in a place where you feel physically and mentally safe in order to decide how to take care of yourself.
+          <br><br><b>Seek medical care:</b><br>
+          As soon as possible, go to a hospital emergency department. Even if you think that you do not have any physical injuries, it is important to have a medical examination. Having a medical exam is also a way for you to preserve physical evidence of a sexual assault if you decide to report the crime to law enforcement. In addition to the exam, medical providers can offer you emergency contraception to prevent pregnancy, medication to help prevent HIV and counseling to help determine your risk for HIV, and medication to prevent many other sexually transmitted infections.
+          <br><br><b>Do not shower and try to save all evidence</b><br>
+          In an effort to preserve all physical evidence of the assault:<br>
+          •	If possible, do not shower, bathe, douche, eat, drink, urinate, defecate, wash your hands, or brush your teeth until after you have had a medical examination. If you have already done something on this list, it is still possible to have DNA evidence collected. Try to get to the hospital as soon as possible. <br>
+          •	Save all of the clothing you were wearing at the time of the assault. <br>
+          •	Do not clean or disturb anything in the area where the assault occurred.
+          <br><br><b>If you think you have been drugged</b><br>
+          If you suspect that you may have been given a “rape drug,” tell hospital personnel as soon as possible. Some drugs leave a person’s body system very quickly while others take longer. The best chance of detecting a drug will be if your first urination is what they get a sample of at the hospital.
+          <br><br><b>You can choose to report the crime to campus authorities, campus police and/ or local police:</b><br>
+          If you want to report the crime, notify the police immediately. Reporting the crime can help you regain a sense of personal power and control. You may also decide to report the crime to your school’s Title IX coordinator or other campus authority.
+          <br><br><b>Call someone you trust:</b><br>
+          •	Call a friend, a family member, or someone else you trust who can be with you and provide support.<br>
+          •	You can also contact an advocate for free and confidential support.
+          <br><br><b>Many choices and decisions</b><br>
+          After a sexual assault, you have a lot of choices and decisions to make - e.g., about getting medical care, making a police report, and telling other people. You may have concerns about the impact of the assault and the reactions of friends and family members. You can get information and support by calling your local <a href="crisisCenter.html">crisis center</a>
+          [SOURCE: Adapted from the Rape, Abuse & Incest National Network [RAINN] Website for N.H. College Students]
+        </p>
+      </div>
+
+      <div id="hospital" tabindex="-1"></div>
+
+      <button class="question" id="question5">If I choose to report the assault, file a report what are my options?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>The decision to report to law enforcement:</b><br>
+          The decision to report to law enforcement is yours alone to make if you are 18 or older<br><br>
+          <b><u>Reporting to law enforcement:</u></b><br>
+          <br><b>Initial meeting:</b><br>
+          An officer will meet with you in a safe place to take a brief, initial report.  They will also encourage you to seek medical attention to ensure that you receive proper care and follow up and offer crisis center services.
+          <br><br><b>Follow-up meeting:</b><br>
+          Arrangements will be made with you to meet in the near future with the investigating officer or detective assigned to follow up on the initial report. NH best practice allows for a crisis center advocate to be present if the victim desires, during the interview process.
+          <br><br><b>Investigation:</b><br>
+          Investigative follow up will continue with the collection of evidence, contact with potential witnesses and the suspect, as well as complete and thorough documentation.
+          <br><br><b>If you want to remain anonymous:</b><br>
+          A person who is over the age of 18 and has been sexually assaulted in NH can contact law enforcement to ask questions about the reporting process without identifying themselves in an effort to determine if they want to come forward and make a formal report. They may also provide some information about what happened to them; however, law enforcement cannot proceed with an investigation without an identified victim.
+          <br><br><b><u>Reporting to Campus officials:</u></b><br>
+          You may also decide to report to your campus. Your school’s Title IX Coordinator is responsible for making sure the school responds to all reports of sexual assault. Read more about how schools may respond <a href="#" onclick="myFunc('question5','question10')">here</a>. They can also provide you with <a href="#" onclick="myFunc('question5','question9')">support and resources</a>.
+        </p>
+      </div>
+
+      <button class="question">How long do I have to report?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          •	In New Hampshire, the statute of limitations for Aggravated Felonious Sexual Assault and Felonious Sexual Assault is 6 years. If the suspect leaves the state during the 6 years, the statute of limitations may be extended.<br>
+          •	The statute of limitations for Sexual Assault is 1 year.<br>
+          •	If the victim is under the age of 18 at the time of the assault, the statute of limitations is 22 years after their 18th birthday (until age 40).<br>
+
+          <br><br>Read more about legal definitions <a href="http://www.gencourt.state.nh.us/rsa/html/NHTOC/NHTOC-LXII-632-A.htm">here.</a><br>
+
+          [SOURCE: http://apps.rainn.org/policy-crime definitions/index.cfm?state=New%20Hampshire&group=7]
+        </p>
+      </div>
+
+      <div id="question9Focus" tabindex="-1"></div>
+
+      <button class="question" id="testButton">What will happen if I go to the hospital?</button>
+      <div class="drop-panel" >
+        <p class="answer">
+          <b><u>Before going to the hospital</u></b><br>
+          <br><b>Avoid bathing</b><br>
+          If possible, avoid showering, bathing, using feminine hygiene products, urinating, defecating, washing your hands, or brushing your teeth before going to the hospital. This helps preserve evidence. If you have already done something on this list, it is still possible to have DNA evidence collected. Try to get to the hospital as soon as possible.
+          <br><br><b>Bring a change of clothes</b><br>
+          Bring a change of clothing with you if you are able. Any clothing worn at the time of the assault may be collected as evidence.
+          <br><br><b>Bring someone you trust</b><br>
+          You may wish to bring a trusted friend or family member with you for support.
+          <br><br><b>Crisis center advocate</b><br>
+          A local crisis center advocate will be available to provide free and confidential emotional support, information, and resources throughout the process.
+          <br><br><b><u>Forensic exam procedures</u></b><br>
+          This medical exam will determine if there are any physical injuries incurred during the assault, offer medication to help prevent sexually transmitted infections, and will collect data if you choose to report to law enforcement and proceed to trial
+          <br><br>• The medical exam will determine if there are any physical injuries incurred during the assault, even if you do not think you have been injured. They will also offer emergency contraception to prevent pregnancy, medication to help prevent HIV and counseling to determine your risk for HIV, and medication to prevent many other sexually transmitted infections. During the exam you may also choose to have evidence collected in case you want to report to law enforcement. This can be done anonymously so that you have additional time to decide if you want to report. [SOURCE: http://www.nhcadsv.org/hospital_exam.cfm]<br>
+          <br><br><b><u>How much will it cost?</u></b><br>
+          <br><b>No charge for the exam</b><br>
+          You will not be charged for the sexual assault examination. In addition, you will receive a voucher for a follow-up exam.
+          <br><br><b>Ongoing health costs</b><br>
+          If you decide to report to law enforcement, you may also be reimbursed for follow-up care and ongoing crime-related expenses (e.g., mental health treatment) after you leave the hospital.
+          <br><br>For more information, contact:<br>
+          <b>New Hampshire Victims' Compensation Program</b><br>
+          Office of the Attorney General<br>
+          33 Capitol Street<br>
+          Concord, NH 03301-6397<br>
+          Phone: (603) 271-1284<br>
+          Toll Free: 1-800-300-4500 (in NH only)<br>
+          TDD Access Relay NH: 1-800-735-2964<br>
+          E-mail: victimcomp@doj.nh.gov<br>
+          <br><b><u>Will the hospital call the police?</u></b><br>
+          •	<u>No</u>, not in NH and not if you do not want them to.<br>
+          •	The exceptions are for people under the age of 18 or who have suffered gunshot wound or other serious bodily injury.<br>
+          •	If you go to the hospital, you will receive medical care and still be able to decide whether or not you wish to report to law enforcement if you are over the age of 18.<br>
+          •	You also have the option to have forensic evidence collected anonymously. You will be given a serial number for the exam kit, which will be stored at the state lab for 60 days. If, during this time, you choose to report  to law enforcement, the kit will be unsealed and tested for evidence. <br> Note: Anonymous evidence collection cannot be provided for those under the age of 18.<br>
+          [SOURCE: <a href="http://doj.nh.gov/criminal/victim-assistance/documents/acute-care-protocol.pdf">http://doj.nh.gov/criminal/victim-assistance/documents/acute-care-protocol.pdf]</a>
+          <br><br><b>Is it too late?</b><br>
+          DNA evidence is most reliably collected within 72 hours; however, evidence collection kits can be collected up to five days after an assault. However, the window of time for medication to prevent HIV and testing for detecting most drugs used to facilitate sexual assault is even shorter. It is best to get to the hospital as soon as possible.
+          [SOURCE: <a href="http://www.nhcadsv.org/hospital_exam.cfm">http://www.nhcadsv.org/hospital_exam.cfm]</a>
+        </p>
+      </div>
+
+
+
+      <button class="question">Where can I find my college’s policies on sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <a href="sexualAssault.html">Campus sexual assault policy</a>
+        </p>
+      </div>
+
+      <div id="question10Focus" tabindex="-1"></div>
+
+      <button class="question" id="question9">I am a survivor of sexual assault and need someone to talk to. What supports are available for me, and will what I say remain confidential?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b><u>On-campus</u></b>
+          <br><br><b>Counseling center</b><br>
+          At some colleges, a counselor or counseling center can provide confidential support. To find out what options are available on your campus, and if they are confidential, please visit our <a href="campusCounseling.html">resource section.</a>
+          <br><br><b>Support groups</b><br>
+          You can check with your campus <a href="campusCounseling.html">counseling center</a> to see if any support groups are available at your school.
+          <br><br><b>Title IX Coordinator</b><br>
+          You may wish to speak with the Title IX Coordinator at your college. The Title IX Coordinator can be a very helpful resource; however, they will be required to take immediate action to address the assault
+          <br><br><b>Role of the Title IX Coordinator</b><br>
+          The <a href="titleNine.html">Title IX Coordinator</a> must take action to address the violence, remedy the harm and prevent the recurrence. The Title IX Coordinator can provide you with options for enhancing your safety, as well as for proceeding with a case. You may request confidentiality, but the Title IX Coordinator must consider safety concerns for the campus as a whole. School officials are not allowed to discourage you from continuing your education.
+          <br><br><b>Off-campus</b><br>
+          <br><b>Local Crisis Center</b><br>
+          Advocates from your <a href="crisisCenter.html">local crisis center</a> can be reached anytime of the day or night. They provide free and confidential support, advocacy, and information, no matter how long ago the assault happened – you don’t have to be in crisis to call a crisis center.
+        </p>
+      </div>
+
+      <button class="question" id="question10">If the assault is reported, what will the school do next?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          Schools must take immediate action to address all reports of sexual violence. This often includes an investigation and some kind of adjudication or conduct hearing. Schools have different policies and procedures established for how they proceed with a case.  See your school’s policy <a href="sexualAssault.html">here.</a><br>
+          In addition to a hearing or investigation, the school must make sure that you can pursue your education safely and free of ongoing harassment, discrimination, or violence. There are a number of remedies or safety measures the school can implement. During the investigation and adjudication process, before the final decision is made, they can implement what are often called “interim relief measures.” These can include changes in housing, class or sports schedule, work-study or campus job assignment, or extracurricular activities and clubs.  These accommodations should not pose an undue burden to you, including a financial burden.  However, which measures are available to you will depend on the circumstances of your case, your school’s policy, and the choices you make regarding pursuing a formal complaint process. They can also implement an administrative No Contact order, barring the person who assaulted you from having contact with you.<br>
+          Once the final outcome of your case is determined, these measures may or may not continue depending on the finding and any sanction that might be imposed.<br>
+          At the beginning of this process, your school should present you with multiple options, including the option to file a formal complaint or providing you with other forms of assistance. You may request confidentiality, but your school will also have to consider its responsibility to ensure that your campus community is safe and free of gender-based discrimination.<br>
+          They should also inform you of off-campus options and resources, including getting medical attention, reporting to police, and contacting the local crisis center. There are many differences between an on-campus response and an off-campus criminal justice system response. It is your choice to pursue one, both, or neither. A crisis advocate can help you understand these options.
+        </p>
+      </div>
+
+      <button class="question">How can I learn more about my college’s responsibility address sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          Part of your school’s responsibility is to provide education around sexual assault and your school’s policies and procedures. The Title IX Coordinator is often involved in implementing this programing and training, so you can contact them for more information. You can also check out the following links:
+          <a href="http://www.notalone.gov">www.notalone.gov</a>
+          <a href="http://www.knowyourix.org">www.knowyourix.org</a>
+          <a href="http://www.clerycenter.org">www.clerycenter.org</a>
+        </p>
+      </div>
+
+      <button class="question">How can I take care of myself?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          It is important to practice good <a href="selfCare.html">self care</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Friend -->
+    <div class="list offset-160 animated fadeInLeft" id="faq2" style="visibility: hidden;">
+      <button class="question">My friend was just sexually assaulted. What do I do?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Ask if they are safe now:</b><br>
+          Ask your friend if they are safe now, especially if they tell you by phone or text.
+          <br><br><b>Listen:</b><br>
+          •	Listen and offer support.<br>
+          •	Remain calm and non-judgmental.<br>
+          •	Do not interrogate. Allow your friend to open up on their terms.
+          <br><br><b>Believe your friend:</b><br>
+          Believe your friend, and reassure them that they are not to blame in any way.
+          <br><br><b>Encourage your friend to seek medical attention:</b><br>
+          Encourage your friend to seek medical attention, but ultimately respect their decision if they are not ready. Offer information and support, but do not force your friend to do anything they do not want to do.
+          <br><br><b>Respect their right to choose:</b><br>
+          Do not pressure your friend to do anything that they do not want or feel ready to do.
+          <br><br><b>Offer support:</b><br>
+          If your friend plans to seek medical care, or report to police or campus officials, offer to go with them.
+        </p>
+      </div>
+
+      <div id="question4Focus" tabindex="-1"></div>
+
+      <button class="question">How can I support a friend who has been sexually assaulted?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Listen:</b><br>
+          •	Listen without interrupting.<br>
+          •	Do not interrogate.<br>
+          •	Allow your friend to open up to you on their terms.
+          <br><br><b>Believe them:</b><br>
+          Believe your friend unconditionally. It takes courage to talk about a sexual assault.
+          <br><br><b> Remain calm and non-judgmental:</b><br>
+          Reassure your friend that this was not their fault and they are not to blame in any way.
+          <br><br><b> Offer support:</b><br>
+          •	Ask your friend how you can help support them. Let your friend know that you want to be there for them in any way you can.<br>
+          •	If your friend plans to seek medical care or file a report, offer to go with them.<br>
+          •	Encourage your friend to seek support, but ultimately respect your friend’s decision if they are not ready.
+          <br><br><b>Respect your friend’s privacy:</b><br>
+          Respect your friend’s privacy. Do not share what they have told you with anyone unless you have their permission.
+          <br><br><b>Encourage good self-care:</b><br>
+          Encourage your friend to practice good <a href="selfCare.html">self-care</a>, and remember that it is important for you to take care of yourself as well. What is <a href="selfCare.html">self-care?</a>
+        </p>
+      </div>
+
+      <button class="question">What is sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">The term sexual assault refers to any sexual contact that occurs without explicit consent. Sexual assault can take many forms, but it is never the victim’s fault. Forms of sexual assault include: penetration of the victim’s body (also known as rape), attempted rape, forcing a victim to perform sexual acts, and fondling or unwanted sexual touching.</p>
+      </div>
+
+      <button class="question" id="question4">What is <u>consent?</u></button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Definition:</b><br>
+          Consent is two people (or more) deciding together to do the same thing, at the same time, in the same way, with each other, without coercion, intimidation, manipulation, physical force, power disparity, mental illness, incapacitation, intoxication, and/or threats.
+
+          <br><br><b>Active consent:</b><br>
+          Consent is active, not passive. There must always be active consent on both sides. A person who consents has the right to change their mind at any point in time. If they do, the sexual activity must stop immediately.
+
+          <br><br><b>Legal age of consent:</b><br>
+          In New Hampshire, the legal age of consent is 16.
+        </p>
+      </div>
+
+      <button class="question">Can an acquaintance, friend, or romantic partner commit sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">Yes. You always have the right to decide what sexual contact you consent to, with whom, and when you are comfortable with it. Active consent on a prior occasion does <u>not</u> provide consent for future contact. Someone who the victim knows perpetrates approximately 2/3 of all sexual assaults. <br><br>[SOURCE: U.S. Department of Justice, National Crime Victimization Study: 2009-2013]</p>
+      </div>
+
+      <button class="question">Is there anyone that I can talk to for support?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          It can be hard to know what to do to help a friend who has been sexually 	assaulted. You may feel angry, confused and helpless. There are people 	you can talk to:
+          <br><br><b>Campus counseling center</b><br>
+          The<a href="campusCounseling.html">counseling center</a> can provide confidential support.
+          <br><br><b>Local crisis center</b><br>
+          Advocates at the local <a href="crisisCenter.html">crisis center</a> can provide you with support and information. They can suggest local resources, additional ways to help your friend, and tools to practice self-care.
+        </p>
+      </div>
+
+      <button class="question">Where can I find my college’s sexual assault policies?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          See <a href="sexualAssault.html">campus sexual assault policy</a>
+        </p>
+      </div>
+
+      <button class="question">Why did my friend react a certain way to the assault? Why are they acting or behaving this way now?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          During a traumatic event, a person may respond in ways that do not seem to make sense. They may react differently from how you imagine you might react or differently from how they have reacted in other situations. After the traumatic event, they may behave in ways that seem strange or talk about the situation in ways that do not add up. However, when you learn about trauma, these responses and behaviors can start to make a lot more sense.
+        </p>
+      </div>
+
+      <button class="question" id="question9">Why didn’t my friend fight back or try to run away?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          There are a number of ways people may react to sexual assault — not a single “right” or “wrong” response. Sometimes, it’s easy to understand why a person is unable to fight back or run away; they could have been too intoxicated, drugged, or otherwise physically unable to do so. Sometimes a person makes a decision that fighting back is more dangerous, and they want to survive the assault with as little physical injury as possible; so, they comply or submit to the assailant, but that’s not the same thing as <a href="#" onclick="myFunc('question9','question4')">consent</a>.<br>
+          When met with a situation that threatens their survival or physical or emotional well-being, they often react with an automatic response designed to help. You might have heard of “fight or flight,” but it “fight, flight, freeze” more accurately captures the range of responses that a victim may have. In these situations, the brain triggers a release of hormones that affect our behavior. These can include the hormones that people often think of as stress hormones — the adrenaline that can make us feel “pumped up” and the cortisol that gives us energy. A surge of these hormones could result in fighting back or running away, if the victim is physically able to do so. There are also hormones that block pain, both physical and emotional, which can result in people feeling “out of it” or disconnected to the assault. Finally, there is also a hormone that causes positive feelings, which is another way to try to lessen the pain of the assault.<br>
+          When someone experiences traumatic, parts of the brain that are responsible for survival are activated. The part of the brain that you use to make logical or rational decisions is often compromised. The way someone responds — flight, fight, or freeze — is a hardwired, automatic response meant to help us survive a critical threat. It isn’t a matter of making a right choice or wrong choice, because it isn’t even a conscious decision.
+        </p>
+      </div>
+
+      <button class="question">The way my friend is talking about the assault seems odd or doesn’t make sense to me — why?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          There is no wrong way to respond after the assault. Some people cry or yell, while others speak calmly. People can appear anxious, confused, withdrawn, or disconnected. They may have no affect at all or even laugh. There is no one correct way that all victims should respond.<br>
+          As they try to talk about the assault, instead of going chronologically through the event, they may “jump around” in time or remember new details. This is also an outcome of the trauma suffered by the victim. Just as the hormone release associated with trauma can trigger an automatic behavioral response, it also interferes with memory. It does not mean the memories are false, just that the brain can’t store and retrieve them normally
+        </p>
+      </div>
+
+      <button class="question">My friend is just not acting like themself. Is this because of the assault? When will they be over it?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          It can take a long time to heal from a traumatic event. The ways they react might not make sense. Some common responses to trauma include:<br>
+          •	feelings of guilt, shame, embarrassment, anger at self, self-blame<br>
+          •	acting like nothing happened – wanting to make everything go back to normal<br>
+          •	academic struggles and/or difficulty concentrating<br>
+          •	hypervigilance (extreme concern with their safety), jumpiness and/or a heightened startle response<br>
+          •	not wanting to be touched<br>
+          •	changes in eating, sleeping, or how they dress<br>
+          •	becoming socially withdrawn<br>
+          •	difficulty trusting people<br>
+          •	increased drinking or drug use<br>
+          •	engaging in self-injury or risky behaviors<br><br>
+          These behaviors are common — so, if you see your friend doing any of the above, try to be compassionate and understanding. That said, just because they are common doesn’t mean they are inevitable or should be ignored. If you are worried, encourage your friend to seek help.
+        </p>
+      </div>
+
+      <button class="question">Where can I learn more about trauma?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          •	<b>Article: “Fight, flight or …freeze? Yes. freeze.”</b><br>
+          Rebecca Campbell, Ph.D., Professor of Psychology at Michigan State University.
+          <a href="http://www.joyfulheartfoundation.org/blog/talking-about-tonic-immobility-tonights-svu">http://www.joyfulheartfoundation.org/blog/talking-about-tonic-immobility-tonights-svu</a><br>
+
+          •	<b>Video of guest lecture by given to college students: “The Neurobiology of Trauma”</b><br>
+          Rebecca Campbell, Ph.D., Professor of Psychology at Michigan State University.
+          <a href="https://www.youtube.com/watch?v=mTOZE90-fCY">https://www.youtube.com/watch?v=mTOZE90-fCY</a><br>
+
+
+          •	<b>Blog: “Open Doors to Safety”</b> <br>
+          Linda Douglas, Trauma Specialist, NH Coalition Against Domestic and Sexual Violence, M.Ed., CTSS.
+          <a href="www.opendoorsnh.blogspot.com">www.opendoorsnh.blogspot.com</a><br>
+
+          •	<b>Book: Trauma and Recovery</b><br>
+          Judith Herman, M.D.
+          <a href="https://books.google.com/books/about/Trauma_and_Recovery.html?id=3cn2R0KenN0C">https://books.google.com/books/about/Trauma_and_Recovery.html?id=3cn2R0KenN0C</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Family -->
+    <div class="list offset-160 animated fadeInLeft" id="faq3" style="visibility: hidden;">
+
+      <button class="question">What is sexual assault? </button>
+      <div class="drop-panel">
+        <p class="answer">The term sexual assault refers to any sexual contact that occurs without explicit consent. Sexual assault can take many forms, but it is never the victim’s fault. Forms of sexual assault include: penetration of the victim’s body (also known as rape), attempted rape, forcing a victim to perform sexual acts, and fondling or unwanted sexual touching.</p>
+      </div>
+
+      <button class="question" id="question2">What is <u>consent?</u></button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Definition:</b><br>
+          Consent is two people (or more) deciding together to do the same thing, at the same time, in the same way, with each other, without coercion, intimidation, manipulation, physical force, power disparity, mental illness, incapacitation, intoxication, and/or threats.
+
+          <br><br><b>Active consent:</b><br>
+          Consent is active, not passive. There must always be active consent on both sides. A person who consents has the right to change their mind at any point in time. If they do, the sexual activity must stop immediately.
+
+          <br><br><b>Legal age of consent:</b><br>
+          In New Hampshire, the legal age of consent is 16.
+        </p>
+      </div>
+
+      <button class="question">Can an acquaintance, friend, or romantic partner commit sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">Yes. Approximately 2/3 of all sexual assaults are perpetrated by someone who the victim knows. Once someone has reached the age of consent (16 in NH), they have the right to decide what sexual contact they consent to, with whom, and when they are comfortable with it. Active consent on a prior occasion does not provide consent for future contact. (SOURCE: U.S. Department of Justice, National Crime Victimization Study: 2009-2013)</p>
+      </div>
+
+      <button class="question" id="question4">How can I talk about sexual assault prevention with my child or family member?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          It can be difficult to talk about sexual assault with your child or family member. Some helping talking points include:
+          <br><br><b>Educate yourself</b><br>
+          Educate yourself about sexual assault in the college setting.
+          <br><br><b>Discuss the importance of consent</b><br>
+          Discuss the importance of <a href="#" onclick="myFunc('question4','question2')">“consent.”</a> Explain that it is more than “no means no.”
+          <br><br><b>Talk about safety</b><br>
+          Plan for safety in advance with them. Strategize about what to do in a potentially dangerous situation.
+          <br><br><b>Emphasize victims of sexual assault are never to blame</b><br>
+          Emphasize that there is never an excuse for sexual assault and that survivors are never to blame.
+          <br><br><b>Encourage them to take a stand</b><br>
+          Encourage your student to get involved with sexual assault prevention on campus.
+          <br><br><b>Remind them of your unconditional love and support</b><br>
+          Let them know that you will always be there for them and that they can come to you no matter what.
+          <br><br><b>Help them get correct information</b><br>
+          If they ask you a question and you don’t know the answer, don’t guess, assume, or go by what you’ve heard. Encourage them to contact an advocate at their local <a href="crisisCenter.html">crisis center.</a>  You can also look up information specific to their school.
+        </p>
+      </div>
+
+      <button class="question">My child or family member was sexually assaulted…</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>How am I supposed to react?</b><br>
+          It can be very difficult and overwhelming to hear that your child or family member has been sexually assaulted. The most important thing you can do is to help your college student feel safe and supported. Anger, confusion, sadness, and helplessness are all normal emotions to be experiencing right now. Remember that it is important to take care of yourself and resources are available for you as well.
+
+          <br><br><b>How can I be supportive?</b><br>
+          Listen<br>
+          •	Listen without interrupting.<br>
+          •	Do not interrogate.<br>
+          •	Allow them to open up to you on their terms.
+          <br><br><b>Believe them:</b><br>
+          Believe them unconditionally. It takes courage to talk about a sexual assault.
+          <br><br><b>Remain calm and non-judgmental:</b><br>
+          Reassure them that this was not their fault and they are not to blame in any way.
+          <br><br><b>Offer support:</b><br>
+          •	Ask how you can help support them. Let them know that you want to be there for them in any way you can.<br>
+          •	Encourage them to seek support, but ultimately respect their decision if they are not ready.<br>
+          •	If they plan on seeking medical care or filing a report, offer to go with them.
+          <br><br><b>Respect your family member’s privacy:</b><br>
+          Respect their privacy. Do not share what they have told you with anyone unless you have their permission.
+          <br><br><b>Encourage good self-care:</b><br>
+          Encourage them to practice good <a href="selfCare.html">self-care</a>, and remember that it is important for you to take care of yourself as well.
+
+          <br><br><b>Recognize that healing is a process:</b><br>
+          Understand that healing takes time. Continue to offer support.
+
+          <br><br><b>Where can I receive support?</b><br>
+          Reach out to your local <a href="crisisCenter">crisis center.</a> 24-hour hotlines are available throughout the state. Advocates can provide you with free, confidential support and information about resources.
+
+        </p>
+      </div>
+
+
+      <button class="question">Why did my family member/child react a certain way to the assault? Why are they acting or behaving this way now?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          During a traumatic event, a person may respond in ways that do not seem to make sense. They may react differently from how you imagine you might react or differently from how they have reacted in other situations. After the traumatic event, they may behave in ways that seem strange or talk about the situation in ways that do not add up. However, when you learn about trauma, these responses and behaviors can start to make a lot more sense.
+        </p>
+      </div>
+
+      <button class="question" id="question6">Why didn’t my family member/child fight back or try to run away?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          There are a number of ways people may react to sexual assault — not a single “right” or “wrong” response. Sometimes, it’s easy to understand why a person is unable to fight back or run away; they could have been too intoxicated, drugged, or otherwise physically unable to do so. Sometimes a person makes a decision that fighting back is more dangerous, and they want to survive the assault with as little physical injury as possible; so, they comply or submit to the assailant, but that’s not the same thing as <a href="#" onclick="myFunc('question6','question2')">consent</a>.<br>
+
+          When met with a situation that threatens their survival or physical or emotional well-being, they often react with an automatic response designed to help. You might have heard of “fight or flight,” but it “fight, flight, freeze” more accurately captures the range of responses that a victim may have. In these situations, the brain triggers a release of hormones that affect our behavior. These can include the hormones that people often think of as stress hormones — the adrenaline that can make us feel “pumped up” and the cortisol that gives us energy. A surge of these hormones could result in fighting back or running away, if the victim is physically able to do so. There are also hormones that block pain, both physical and emotional, which can result in people feeling “out of it” or disconnected to the assault. Finally, there is also a hormone that causes positive feelings, which is another way to try to lessen the pain of the assault.<br>
+
+          When someone experiences traumatic, parts of the brain that are responsible for survival are activated. The part of the brain that you use to make logical or rational decisions is often compromised. The way someone responds — flight, fight, or freeze — is a hardwired, automatic response meant to help us survive a critical threat. It isn’t a matter of making a right choice or wrong choice, because it isn’t even a conscious decision.
+
+        </p>
+      </div>
+
+      <button class="question">The way my family member/child is talking about the assault seems odd or doesn’t make sense to me — why?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          There is no wrong way to respond after the assault. Some people cry or yell, while others speak calmly. People can appear anxious, confused, withdrawn, or disconnected. They may have no affect at all or even laugh. There is no one correct way that all victims should respond.<br><br>
+          As they try to talk about the assault, instead of going chronologically through the event, they may “jump around” in time or remember new details. This is also an outcome of the trauma suffered by the victim. Just as the hormone release associated with trauma can trigger an automatic behavioral response, it also interferes with memory. It does not mean the memories are false, just that the brain can’t store and retrieve them normally.
+        </p>
+      </div>
+
+      <button class="question">My family member/child is just not acting like themself. Is this because of the assault? When will they be over it?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          It can take a long time to heal from a traumatic event. The ways they react might not make sense. Some common responses to trauma include:<br>
+          •	feelings of guilt, shame, embarrassment, anger at self, self-blame<br>
+          •	acting like nothing happened – wanting to make everything go back to normal<br>
+          •	academic struggles and/or difficulty concentrating<br>
+          •	hypervigilance (extreme concern with their safety), jumpiness and/or a heightened startle response<br>
+          •	not wanting to be touched<br>
+          •	changes in eating, sleeping, or how they dress<br>
+          •	becoming socially withdrawn<br>
+          •	difficulty trusting people<br>
+          •	increased drinking or drug use<br>
+          •	engaging in self-injury or risky behaviors<br><br>
+          These behaviors are common — so, if you see your friend doing any of the above, try to be compassionate and understanding. That said, just because they are common doesn’t mean they are inevitable or should be ignored. If you are worried, encourage your friend to seek help.
+        </p>
+      </div>
+
+      <button class="question">Where can I learn more about trauma?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          •	<b>Article: “Fight, flight or …freeze? Yes. freeze.”</b><br>
+          Rebecca Campbell, Ph.D., Professor of Psychology at Michigan State University.
+          <a href="http://www.joyfulheartfoundation.org/blog/talking-about-tonic-immobility-tonights-svu">http://www.joyfulheartfoundation.org/blog/talking-about-tonic-immobility-tonights-svu</a><br><br>
+
+          •	<b>Video of guest lecture by given to college students: “The Neurobiology of Trauma”</b><br>
+          Rebecca Campbell, Ph.D., Professor of Psychology at Michigan State University.
+          <a href="https://www.youtube.com/watch?v=mTOZE90-fCY">https://www.youtube.com/watch?v=mTOZE90-fCY</a><br><br>
+
+
+          •	<b>Blog: “Open Doors to Safety”</b> <br>
+          Linda Douglas, Trauma Specialist, NH Coalition Against Domestic and Sexual Violence, M.Ed., CTSS.
+          <a href="www.opendoorsnh.blogspot.com">www.opendoorsnh.blogspot.com</a><br><br>
+
+          •	<b>Book: Trauma and Recovery</b><br>
+          Judith Herman, M.D.
+          <a href="https://books.google.com/books/about/Trauma_and_Recovery.html?id=3cn2R0KenN0C">https://books.google.com/books/about/Trauma_and_Recovery.html?id=3cn2R0KenN0C</a>
+        </p>
+      </div>
+
+      <button class="question">Where can I find the policies on sexual assault for this college?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          You can view the school’s campus sexual assault policy <a href="sexualAssualt.html">here</a>. You can also speak with the school’s <a href="titleNine.html">Title IX Coordinator</a>.
+        </p>
+      </div>
+
+      <button class="question">My family member/child is looking at or plans to attend this college. Where can I find information about sexual assault on this campus?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <a href="sexualAssualt.html">Campus Sexual Assault Policy</a><br>
+          <a href="titleNine.html">Title IX Coordinator</a>.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Faculty or Staff -->
+    <div class="list offset-160 animated fadeInLeft" id="faq4" style="visibility: hidden;">
+
+      <button class="question">What is sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">The term sexual assault refers to any sexual contact that occurs without explicit consent. Sexual assault can take many forms, but it is never the victim’s fault. Forms of sexual assault include: penetration of the victim’s body (also known as rape), attempted rape, forcing a victim to perform sexual acts, and fondling or unwanted sexual touching.</p>
+      </div>
+
+      <button class="question" id="question2">What is <u>consent?</u></button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Definition:</b><br>
+          Consent is two people (or more) deciding together to do the same thing, at the same time, in the same way, with each other, without coercion, intimidation, manipulation, physical force, power disparity, mental illness, incapacitation, intoxication, and/or threats.
+
+          <br><br><b>Active consent:</b><br>
+          Consent is active, not passive. There must always be active consent on both sides. A person who consents has the right to change their mind at any point in time. If they do, the sexual activity must stop immediately.
+
+          <br><br><b>Legal age of consent:</b><br>
+          In New Hampshire, the legal age of consent is 16.
+        </p>
+      </div>
+
+      <button class="question">Can an acquaintance, friend, or romantic partner commit sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">Yes. You always have the right to decide what sexual contact you consent to, with whom, and when you are comfortable with it. Active consent on a prior occasion does <u>not</u> provide consent for future contact. Someone who the victim knows perpetrates approximately 2/3 of all sexual assaults. <br><br>[SOURCE: U.S. Department of Justice, National Crime Victimization Study: 2009-2013]</p>
+      </div>
+
+      <button class="question">A student disclosed to me that s/he was assaulted. What do I do?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Listen:</b><br>
+          •	Listen without interrupting.<br>
+          •	Do not interrogate.<br>
+          •	Allow the student to open up to you on their terms.
+          <br><br><b>Believe them:</b><br>
+          Believe the student unconditionally. It takes courage to talk about a sexual assault.
+          <br><br><b>Remain calm and non-judgmental:</b><br>
+          Reassure the student that this was not their fault and they are not to blame in any way.
+          <br><br><b>Know your reporting obligations:</b><br>
+          Most staff and faculty members are considered “responsible employees” under Title IX and are mandated to report to the Title IX Coordinator. Exceptions may include counselors, health services, and chaplains, but only when acting in that capacity. If you have any questions about your obligations, ask your Title IX Coordinator. Under NH State Law, abuse of minors (under the age of 18) must also be reported. Be honest with the student about your obligations. Ask them if they would prefer to report together, as that can help victims start to regain a sense of power and control.
+          <br><br><b>Respect their privacy:</b><br>
+          If you are a mandated reporter, you must follow protocol; however, do not share your knowledge of the student’s assault with anyone other than the person designated.
+          <br><br><b>Offer support:</b><br>
+          Ask the student how you can help support them.
+          <br><br><b>Encourage good self-care:</b><br>
+          Encourage the student to practice good <a href="selfCare.html">self-care</a>.
+        </p>
+      </div>
+
+      <button class="question">Who is obligated to report campus sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          Most college and university employees are considered “responsible employees” under Title IX and are obligated to report sexual assault. The exceptions are usually those with privilege under state law or a professional license requiring confidentiality. Examples may include therapists, professional and pastoral counselors, and advocates at qualifying crisis centers for sexual assault and intimate partner violence. If you are unsure whether or not you are considered a responsible employee, check your institution’s <a href="sexualAssault.html">policy</a> or ask your <a href="titleNine.html">Title IX Coordinator</a>. It is helpful to be aware of your reporting obligations before students discloses so that if they do, you can provide them with accurate information about what you need to report. Part of the school’s obligation is to ensure that employees know their obligations regarding reporting.
+        </p>
+      </div>
+
+      <button class="question">As a responsible employee, what am I required to report?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          Under Title IX, responsible employees must report all relevant details about the assault that the student (or other person) has shared and that the school will need to determine what occurred and to resolve the situation. This includes the name of the victim, the name of the perpetrator (if known), other students involved as well as relevant facts including date, time and location.  If you have any questions regarding what or to whom you should report, check your institution’s policy or contact your Title IX Coordinator. Campus-specific mandated reporting protocols. *
+        </p>
+      </div>
+
+      <button class="question">I overheard someone say that a student was sexually assaulted. What should I do?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          Campus-specific mandated reporting protocols. There are many ways that employees can become aware of a sexual assault, including through other students, personal essays and other writing assignments, and as a result of students asking for extensions or other accommodations. Title IX is pretty clear that the school is “on notice” once a responsible employee knows or “reasonably should have known” about sexual assault. If the victim and the perpetrator were students at the college or university during the assault, it needs to be reported to the Title IX Coordinator. In some cases, your school may also want you to pass along the information even if the assault occurred before the student was enrolled or if the perpetrator is not affiliated with your institution, for example, if the student is showing signs of distress. Check your institution’s policy or contact your Title IX Coordinator for details.
+        </p>
+      </div>
+
+      <button class="question">How can I support a student who has been sexually assaulted?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          •	Listen without interrupting.<br>
+          •	Believe them.<br>
+          •	Remain calm and non-judgmental.<br>
+          •	Do not interrogate. Allow them to open up to you on their terms.<br>
+          •	Ask how you can help support them.<br>
+          •	Reassure them that this was not their fault and that they are not to blame.<br>
+          •	Respect their privacy; however, if the victim is under 18 follow state law and protocol for reporting. If you are obligated to report under Title IX or the Clery Act, follow campus policy for making the report.<br>
+          •	Encourage them to practice good <a href="selfCare.html">self-care.</a>
+        </p>
+      </div>
+
+      <button class="question">How would I know if one of my students had been sexually assaulted? What are signs of student distress?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          This may be difficult to predict as many of the common effects of sexual assault overlap with other signs of student distress. That said, you might decide to reach out to a student without knowing what is causing their distress. Some signs include:<br>
+          •	Academic struggles (asking for extensions, inability to concentrate, etc)<br>
+          •	Struggles with work study, sports or extracurricular activities<br>
+          •	Being less engaged in class or any of the above activities<br>
+          •	Social withdrawal<br>
+          •	Exhibiting jumpiness or appearing easily startled or uncomfortable with contact or being in crowded spaces.<br>
+          •	Major changes in appearance (marks that could be self-injury, major changes in manner of dress or weight, etc)<br>
+
+          It is important to be aware that sexual assault can also happen in abusive intimate or dating relationships.
+        </p>
+      </div>
+
+      <button class="question">Why did the student react a certain way to the assault? Why are they acting or behaving this way now?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          During a traumatic event, a person may respond in ways that do not seem to make sense. They may react differently from how you imagine you might react or differently from how they have reacted in other situations. After the traumatic event, they may behave in ways that seem strange or talk about the situation in ways that do not add up. However, when you learn about trauma, these responses and behaviors can start to make a lot more sense.
+        </p>
+      </div>
+
+      <button class="question" id="question6">Why didn’t the student fight back or try to run away?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          There are a number of ways people may react to sexual assault — not a single “right” or “wrong” response. Sometimes, it’s easy to understand why a person is unable to fight back or run away; they could have been too intoxicated, drugged, or otherwise physically unable to do so. Sometimes a person makes a decision that fighting back is more dangerous, and they want to survive the assault with as little physical injury as possible; so, they comply or submit to the assailant, but that’s not the same thing as <a href="#" onclick="myFunc('question6','question2')">consent</a><br>
+
+          When met with a situation that threatens their survival or physical or emotional well-being, they often react with an automatic response designed to help. You might have heard of “fight or flight,” but it “fight, flight, freeze” more accurately captures the range of responses that a victim may have. In these situations, the brain triggers a release of hormones that affect our behavior. These can include the hormones that people often think of as stress hormones — the adrenaline that can make us feel “pumped up” and the cortisol that gives us energy. A surge of these hormones could result in fighting back or running away, if the victim is physically able to do so. There are also hormones that block pain, both physical and emotional, which can result in people feeling “out of it” or disconnected to the assault. Finally, there is also a hormone that causes positive feelings, which is another way to try to lessen the pain of the assault.<br>
+
+          When someone experiences traumatic, parts of the brain that are responsible for survival are activated. The part of the brain that you use to make logical or rational decisions is often compromised. The way someone responds — flight, fight, or freeze — is a hardwired, automatic response meant to help us survive a critical threat. It isn’t a matter of making a right choice or wrong choice, because it isn’t even a conscious decision.
+
+        </p>
+      </div>
+
+      <button class="question">The way the student is talking about the assault seems odd or doesn’t make sense to me — why?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          There is no wrong way to respond after the assault. Some people cry or yell, while others speak calmly. People can appear anxious, confused, withdrawn, or disconnected. They may have no affect at all or even laugh. There is no one correct way that all victims should respond.<br>
+          As they try to talk about the assault, instead of going chronologically through the event, they may “jump around” in time or remember new details. This is also an outcome of the trauma suffered by the victim. Just as the hormone release associated with trauma can trigger an automatic behavioral response, it also interferes with memory. It does not mean the memories are false, just that the brain can’t store and retrieve them normally.
+        </p>
+      </div>
+
+      <button class="question">The student is just not acting like themself. Is this because of the assault? When will they be over it?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          It can take a long time to heal from a traumatic event. The ways they react might not make sense. Some common responses to trauma include:<br>
+          •	feelings of guilt, shame, embarrassment, anger at self, self-blame<br>
+          •	acting like nothing happened – wanting to make everything go back to normal<br>
+          •	academic struggles and/or difficulty concentrating<br>
+          •	hypervigilance (extreme concern with their safety), jumpiness and/or a heightened startle response<br>
+          •	not wanting to be touched<br>
+          •	changes in eating, sleeping, or how they dress<br>
+          •	becoming socially withdrawn<br>
+          •	difficulty trusting people<br>
+          •	increased drinking or drug use<br>
+          •	engaging in self-injury or risky behaviors<br><br>
+          These behaviors are common — so, if you see your friend doing any of the above, try to be compassionate and understanding. That said, just because they are common doesn’t mean they are inevitable or should be ignored. If you are worried, encourage your friend to seek help.
+        </p>
+      </div>
+
+      <button class="question">Where can I learn more about trauma?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          •	<b>Article: “Fight, flight or …freeze? Yes. freeze.”</b><br>
+          Rebecca Campbell, Ph.D., Professor of Psychology at Michigan State University.
+          <a href="http://www.joyfulheartfoundation.org/blog/talking-about-tonic-immobility-tonights-svu">http://www.joyfulheartfoundation.org/blog/talking-about-tonic-immobility-tonights-svu</a><br><br>
+
+          •	<b>Video of guest lecture by given to college students: “The Neurobiology of Trauma”</b><br>
+          Rebecca Campbell, Ph.D., Professor of Psychology at Michigan State University.
+          <a href="https://www.youtube.com/watch?v=mTOZE90-fCY">https://www.youtube.com/watch?v=mTOZE90-fCY</a><br><br>
+
+
+          •	<b>Blog: “Open Doors to Safety”</b> <br>
+          Linda Douglas, Trauma Specialist, NH Coalition Against Domestic and Sexual Violence, M.Ed., CTSS.
+          <a href="http://www.opendoorsnh.blogspot.com">www.opendoorsnh.blogspot.com</a><br><br>
+
+          •	<b>Book: Trauma and Recovery</b><br>
+          Judith Herman, M.D.
+          <a href="https://books.google.com/books/about/Trauma_and_Recovery.html?id=3cn2R0KenN0C">https://books.google.com/books/about/Trauma_and_Recovery.html?id=3cn2R0KenN0C</a>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Off-Campus Community Member -->
+    <div class="list offset-160 animated fadeInLeft" id="faq5" style="visibility: hidden;">
+
+      <button class="question">What is sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">The term sexual assault refers to any sexual contact that occurs without explicit consent. Sexual assault can take many forms, but it is never the victim’s fault. Forms of sexual assault include: penetration of the victim’s body (also known as rape), attempted rape, forcing a victim to perform sexual acts, and fondling or unwanted sexual touching.</p>
+      </div>
+
+      <button class="question" id="question2">What is <u>consent?</u></button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Definition:</b><br>
+          Consent is two people (or more) deciding together to do the same thing, at the same time, in the same way, with each other, without coercion, intimidation, manipulation, physical force, power disparity, mental illness, incapacitation, intoxication, and/or threats.
+
+          <br><br><b>Active consent:</b><br>
+          Consent is active, not passive. There must always be active consent on both sides. A person who consents has the right to change their mind at any point in time. If they do, the sexual activity must stop immediately.
+
+          <br><br><b>Legal age of consent:</b><br>
+          In New Hampshire, the legal age of consent is 16.
+        </p>
+      </div>
+
+      <button class="question">Can an acquaintance, friend, or romantic partner commit sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">Yes. Approximately 2/3 of all sexual assaults are perpetrated by someone who the victim knows. Once someone has reached the age of consent (16 in NH), they have the right to decide what sexual contact they consent to, with whom, and when they are comfortable with it. Active consent on a prior occasion does not provide consent for future contact. (SOURCE: U.S. Department of Justice, National Crime Victimization Study: 2009-2013)</p>
+      </div>
+
+      <button class="question">What should I do if a student discloses to me that they have been sexually assaulted?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Listen:</b><br>
+          •	Listen without interrupting.<br>
+          •	Do not interrogate.<br>
+          •	Allow the student to open up to you on their terms.
+          <br><br><b>Believe them:</b><br>
+          Believe the student unconditionally. It takes courage to talk about a sexual assault.
+          <br><br><b>Remain calm and non-judgmental:</b><br>
+          Reassure the student that this was not their fault and they are not to blame in any way.
+          <br><br><b>Offer support:</b><br>
+          Ask the student how you can help support them.
+          <br><br><b>Respect their privacy:</b><br>
+          Do not share what they have told you without their permission, unless one of the following circumstances applies:<br>
+          •	The victim is under 18, in which case a report should be made under NH State Law by calling (800) 894-5533.<br>
+          •	The victim is an incapacitated adult, in which case you should report to the Bureau of Elderly & Adult Services (BEAS). Call (603) 271-7014 or toll Free from within NH at (800) 949-0470<br>
+          •	You are employed by the college or university and are considered a “responsible employee” who is obligated to report under Title IX. Most employees meet the criteria to be designated as responsible employees. If you are unsure of your policies and reporting obligations, contact your Title IX Coordinator.
+          <br><br><b>Encourage good self-care:</b><br>
+          Encourage the student to practice good <a href="selfCare.html">self-care</a>.
+          <br><br><b>Help them get correct information:</b><br>
+          If they ask you a question and you don’t know the answer, don’t guess, assume, or go by what you’ve heard. Encourage them to contact an advocate at their local <a href="crisisCenter.html">crisis center</a>.  You can also look up information specific to your city or town.
+        </p>
+      </div>
+
+      <button class="question">I was told or overheard someone talking about a sexual assault that happened at this college. What can I do?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          If the victim is under the age of 18, it is considered child abuse and should be reported under New Hampshire state law. In addition, both victims and third parties can report to the Title IX Coordinator. It is also important to respect the victim and help him or her regain a sense of control over what happened. If the victim told you in confidence and does not want the incident reported, respect their wishes for privacy. Depending on the circumstances, you might be able to report without sharing the victim’s name. You might feel like the best way to balance the victim’s wishes for privacy with your hope to create a safer community is by getting involved in efforts to raise awareness and prevent future sexual assault. Consider calling the local crisis center to see if they have any upcoming events or awareness campaigns to find out how you can help.
+        </p>
+      </div>
+
+      <button class="question">How can I support a survivor of sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          •	Listen without interrupting.<br>
+          •	Believe them.<br>
+          •	Remain calm and non-judgmental.<br>
+          •	Do not interrogate. Allow them to open up to you on their terms.<br>
+          •	Ask how you can help support them.<br>
+          •	Reassure them that this was not their fault and that they are not to blame.<br>
+          •	Respect their privacy; however, if you are a mandated reporter, follow protocol.<br>
+          •	Encourage them to practice good <a href="selfCare.html">self-care.</a>
+        </p>
+      </div>
+
+      <button class="question">Why did the student react a certain way to the assault? Why are they acting or behaving this way now?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          During a traumatic event, a person may respond in ways that do not seem to make sense. They may react differently from how you imagine you might react or differently from how they have reacted in other situations. After the traumatic event, they may behave in ways that seem strange or talk about the situation in ways that do not add up. However, when you learn about trauma, these responses and behaviors can start to make a lot more sense.
+        </p>
+      </div>
+
+      <button class="question" id="question6">Why didn’t the student fight back or try to run away?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          There are a number of ways people may react to sexual assault — not a single “right” or “wrong” response. Sometimes, it’s easy to understand why a person is unable to fight back or run away; they could have been too intoxicated, drugged, or otherwise physically unable to do so. Sometimes a person makes a decision that fighting back is more dangerous, and they want to survive the assault with as little physical injury as possible; so, they comply or submit to the assailant, but that’s not the same thing as <a href="#" onclick="myFunc('question6','question2')">consent</a>.<br>
+
+          When met with a situation that threatens their survival or physical or emotional well-being, they often react with an automatic response designed to help. You might have heard of “fight or flight,” but it “fight, flight, freeze” more accurately captures the range of responses that a victim may have. In these situations, the brain triggers a release of hormones that affect our behavior. These can include the hormones that people often think of as stress hormones — the adrenaline that can make us feel “pumped up” and the cortisol that gives us energy. A surge of these hormones could result in fighting back or running away, if the victim is physically able to do so. There are also hormones that block pain, both physical and emotional, which can result in people feeling “out of it” or disconnected to the assault. Finally, there is also a hormone that causes positive feelings, which is another way to try to lessen the pain of the assault.<br>
+
+          When someone experiences traumatic, parts of the brain that are responsible for survival are activated. The part of the brain that you use to make logical or rational decisions is often compromised. The way someone responds — flight, fight, or freeze — is a hardwired, automatic response meant to help us survive a critical threat. It isn’t a matter of making a right choice or wrong choice, because it isn’t even a conscious decision.
+
+        </p>
+      </div>
+
+      <button class="question">The way the student is talking about the assault seems odd or doesn’t make sense to me — why?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          Just like someone’s in-the-moment responses during the attack, there is no wrong way to respond after the assault. Some people cry or yell, while others speak calmly. People can appear anxious, confused, withdrawn, or disconnected. They may have no affect at all or even laugh — some of this goes back to the release of hormones.<br>
+          As they try to talk about the assault, instead of going chronologically through the event, they may “jump around” in time or remember new details. This is also a result of the trauma. Just as the hormone release associated with trauma can trigger an automatic behavioral response, it also interferes with memory. It does not mean the memories are false, just that the brain can’t store and retrieve them normally.
+        </p>
+      </div>
+
+      <button class="question">The student is just not acting like themself. Is this because of the assault? When will they be over it?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          It can take a long time to heal from a traumatic event. The ways they react might not make sense. Some common responses to trauma include:<br>
+          •	feelings of guilt, shame, embarrassment, anger at self, self-blame<br>
+          •	acting like nothing happened – wanting to make everything go back to normal<br>
+          •	academic struggles and/or difficulty concentrating<br>
+          •	hypervigilance (extreme concern with their safety), jumpiness and/or a heightened startle response<br>
+          •	not wanting to be touched<br>
+          •	changes in eating, sleeping, or how they dress<br>
+          •	becoming socially withdrawn<br>
+          •	difficulty trusting people<br>
+          •	increased drinking or drug use<br>
+          •	engaging in self-injury or risky behaviors<br><br>
+          These behaviors are common — so, if you see your friend doing any of the above, try to be compassionate and understanding. That said, just because they are common doesn’t mean they are inevitable or should be ignored. If you are worried, encourage your friend to seek help.
+        </p>
+      </div>
+
+      <button class="question">Where can I learn more about trauma?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          •	<b>Article: “Fight, flight or …freeze? Yes. freeze.”</b><br>
+          Rebecca Campbell, Ph.D., Professor of Psychology at Michigan State University.
+          <a href="http://www.joyfulheartfoundation.org/blog/talking-about-tonic-immobility-tonights-svu">http://www.joyfulheartfoundation.org/blog/talking-about-tonic-immobility-tonights-svu</a><br>><br>
+
+          •	<b>Video of guest lecture by given to college students: “The Neurobiology of Trauma”</b><br>
+          Rebecca Campbell, Ph.D., Professor of Psychology at Michigan State University.
+          <a href="https://www.youtube.com/watch?v=mTOZE90-fCY">https://www.youtube.com/watch?v=mTOZE90-fCY</a><br>><br>
+
+
+          •	<b>Blog: “Open Doors to Safety”</b> <br>
+          Linda Douglas, Trauma Specialist, NH Coalition Against Domestic and Sexual Violence, M.Ed., CTSS.
+          <a href="http://www.opendoorsnh.blogspot.com">www.opendoorsnh.blogspot.com</a><br><br>
+
+          •	<b>Book: Trauma and Recovery</b><br>
+          Judith Herman, M.D.
+          <a href="https://books.google.com/books/about/Trauma_and_Recovery.html?id=3cn2R0KenN0C">https://books.google.com/books/about/Trauma_and_Recovery.html?id=3cn2R0KenN0C</a>
+        </p>
+      </div>
+
+      <button class="question">What is the college doing about sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          See campus <a href="sexualAssault.html">sexual assault policy</a> or contact the school’s <a href="titleNine.html">Title IX Coordinator</a> to learn more.
+        </p>
+      </div>
+    </div>
+
+    <!-- Prospective Student -->
+    <div class="list offset-160 animated fadeInLeft" id="faq6" style="visibility: hidden;">
+      <button class="question">What is sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">The term sexual assault refers to any sexual contact that occurs without explicit consent. Sexual assault can take many forms, but it is never the victim’s fault. Forms of sexual assault include: penetration of the victim’s body (also known as rape), attempted rape, forcing a victim to perform sexual acts, and fondling or unwanted sexual touching.</p>
+      </div>
+
+      <button class="question">What is <u>consent?</u></button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Definition:</b><br>
+          Consent is two people (or more) deciding together to do the same thing, at the same time, in the same way, with each other, without coercion, intimidation, manipulation, physical force, power disparity, mental illness, incapacitation, intoxication, and/or threats.
+
+          <br><br><b>Active consent:</b><br>
+          Consent is active, not passive. There must always be active consent on both sides. A person who consents has the right to change their mind at any point in time. If they do, the sexual activity must stop immediately.
+
+          <br><br><b>Legal age of consent:</b><br>
+          In New Hampshire, the legal age of consent is 16.
+        </p>
+      </div>
+
+      <button class="question">Can an acquaintance, friend, or romantic partner commit sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">Yes. Approximately 2/3 of all sexual assaults are perpetrated by someone who the victim knows. Once someone has reached the age of consent (16 in NH), they have the right to decide what sexual contact they consent to, with whom, and when they are comfortable with it. Active consent on a prior occasion does not provide consent for future contact. (SOURCE: U.S. Department of Justice, National Crime Victimization Study: 2009-2013)</p>
+      </div>
+
+      <button class="question">Are there any ways to reduce my risk of sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          It is important to remember that sexual assault victims are never to blame, but there are steps that you can take to increase your safety on campus:
+          <br><br><b>Be aware:</b><br>
+          •	Be aware of your surroundings.
+          <br><br><b>Avoid isolated areas:</b><br>
+          •	Try to avoid isolated areas where it may be more difficult to get help.
+          <br><br><b>Stay connected:</b><br>
+          •	Make sure your cell phone is with you and charged.
+          <br><br><b>Bring a friend:</b><br>
+          •	Bring a friend that you trust with you to parties and social gatherings. Agree to stick together and watch out for each other.
+          <br><br><b>Drugs and alcohol:</b><br>
+          •	Keep an eye on your drink at parties and social gatherings. If you leave your drink unattended, get rid of it.<br>
+          •	Do not accept drinks from people you do not know or from open, communal containers such as punch bowls.<br>
+          •	Be aware of your alcohol consumption. While many people take steps to avoid having drugs added to their drink, alcohol alone is the most commonly used substance to facilitate sexual assault.
+          <br><br><b>Trust your instincts:</b><br>
+          •	Trust your gut instincts. If you feel uncomfortable in a situation, leave or reach out for help. Do not worry that you are overreacting. Our first instincts are often right.
+        </p>
+      </div>
+
+      <button class="question">Where can I find information and statistics about sexual assault on this campus?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          You can find the school’s campus sexual assault policy <a href="sexualAssault">here.</a><br>
+        </p>
+      </div>
+
+      <button class="question">I was sexually assaulted in the past. Are resources available for me?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b><u>On-campus</u></b>
+          <br><br><b>Counseling center:</b><br>
+          At some colleges, a counselor or counseling center can provide confidential support. To find out what options are available on your campus, and if they are confidential, please visit our <a href="campusCounseling.html">resource section.</a>
+          <br><br><b>Support groups:</b><br>
+          You can check with your campus <a href="campusCounseling.html">counseling center</a> to see if any support groups are available at your school.
+          <br><br><b>Title IX Coordinator:</b><br>
+          You may wish to speak with the Title IX Coordinator at your college. The Title IX Coordinator can be a very helpful resource; however, they will be required to take immediate action to address the assault
+          <br><br><b>Role of the Title IX Coordinator:</b><br>
+          The <a href="titleNine.html">Title IX Coordinator</a> must take action to address the violence, remedy the harm and prevent the recurrence. The Title IX Coordinator can provide you with options for enhancing your safety, as well as for proceeding with a case. You may request confidentiality, but the Title IX Coordinator must consider safety concerns for the campus as a whole. School officials are not allowed to discourage you from continuing your education.
+          <br><br><b>Off-campus:</b><br>
+          <br><b>Local Crisis Center:</b><br>
+          Advocates from your <a href="crisisCenter.html">local crisis center</a> can be reached anytime of the day or night. They provide free and confidential support, advocacy, and information, no matter how long ago the assault happened – you don’t have to be in crisis to call a crisis center.
+        </p>
+      </div>
+
+      <button class="question">How can I help with preventing and raising awareness about sexual assault on campus?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>You’re Not Alone</b><br>
+          <b>Know Your Title IX</b><br>
+        </p>
+      </div>
+    </div>
+
+    <!-- Supportive Partner -->
+    <div class="list offset-160 animated fadeInLeft" id="faq7" style="visibility: hidden;">
+      <button class="question">My partner was just sexually assaulted. What do I do?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Ask if they are safe now:</b><br>
+          Ask your friend if they are safe now, especially if they tell you by phone or text.
+          <br><br><b>Listen:</b><br>
+          •	Listen and offer support.<br>
+          •	Remain calm and non-judgmental.<br>
+          •	Do not interrogate. Allow your friend to open up on their terms.
+          <br><br><b>Believe your friend:</b><br>
+          Believe your friend, and reassure them that they are not to blame in any way.
+          <br><br><b>Encourage your friend to seek medical attention:</b><br>
+          Encourage your friend to seek medical attention, but ultimately respect their decision if they are not ready. Offer information and support, but do not force your friend to do anything they do not want to do.
+          <br><br><b>Respect their right to choose:</b><br>
+          Do not pressure your friend to do anything that they do not want or feel ready to do.
+          <br><br><b>Offer support:</b><br>
+          If your friend plans to seek medical care, or report to police or campus officials, offer to go with them.
+        </p>
+      </div>
+
+      <div id="question4Focus" tabindex="-1"></div>
+
+      <button class="question">How can I support a partner who has been sexually assaulted?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Listen:</b><br>
+          •	Listen without interrupting.<br>
+          •	Do not interrogate.<br>
+          •	Allow your friend to open up to you on their terms.
+          <br><br><b>Believe them:</b><br>
+          Believe your friend unconditionally. It takes courage to talk about a sexual assault.
+          <br><br><b> Remain calm and non-judgmental:</b><br>
+          Reassure your friend that this was not their fault and they are not to blame in any way.
+          <br><br><b> Offer support:</b><br>
+          •	Ask your friend how you can help support them. Let your friend know that you want to be there for them in any way you can.<br>
+          •	If your friend plans to seek medical care or file a report, offer to go with them.<br>
+          •	Encourage your friend to seek support, but ultimately respect your friend’s decision if they are not ready.
+          <br><br><b>Respect your friend’s privacy:</b><br>
+          Respect your friend’s privacy. Do not share what they have told you with anyone unless you have their permission.
+          <br><br><b>Encourage good self-care:</b><br>
+          Encourage your friend to practice good self-care, and remember that it is important for you to take care of yourself as well. What is <a href="selfCare.html">self-care?</a>
+        </p>
+      </div>
+
+
+
+      <button class="question">What is sexual assault?</button>
+      <div class="drop-panel">
+        <p class="answer">The term sexual assault refers to any sexual contact that occurs without explicit consent. Sexual assault can take many forms, but it is never the victim’s fault. Forms of sexual assault include: penetration of the victim’s body (also known as rape), attempted rape, forcing a victim to perform sexual acts, and fondling or unwanted sexual touching.</p>
+      </div>
+
+      <button class="question" id="question4">What is <u>consent?</u></button>
+      <div class="drop-panel">
+        <p class="answer">
+          <b>Definition:</b><br>
+          Consent is two people (or more) deciding together to do the same thing, at the same time, in the same way, with each other, without coercion, intimidation, manipulation, physical force, power disparity, mental illness, incapacitation, intoxication, and/or threats.
+
+          <br><br><b>Active consent:</b><br>
+          Consent is active, not passive. There must always be active consent on both sides. A person who consents has the right to change their mind at any point in time. If they do, the sexual activity must stop immediately.
+
+          <br><br><b>Legal age of consent:</b><br>
+          In New Hampshire, the legal age of consent is 16.
+        </p>
+      </div>
+
+      <button class="question">Is there anyone that I can talk to for support?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          It can be hard to know what to do to help a friend who has been sexually 	assaulted. You may feel angry, confused and helpless. There are people 	you can talk to:			<br><br><b>Campus counseling center</b><br>
+          The<a href="campusCounseling.html">counseling center</a> can provide confidential support.
+          <br><br><b>Local crisis center</b><br>
+          Advocates at the local <a href="crisisCenter.html">crisis center</a> can provide you with support and information. They can suggest local resources, additional ways to help your friend, and tools to practice self-care.
+        </p>
+      </div>
+
+      <button class="question">Where can I find my college’s sexual assault policies?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          See <a href="sexualAssault.html">campus sexual assault policy</a>
+        </p>
+      </div>
+
+
+
+      <button class="question">Why did my partner react a certain way to the assault? Why are they acting or behaving this way now?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          During a traumatic event, a person may respond in ways that do not seem to make sense. They may react differently from how you imagine you might react or differently from how they have reacted in other situations. After the traumatic event, they may behave in ways that seem strange or talk about the situation in ways that do not add up. However, when you learn about trauma, these responses and behaviors can start to make a lot more sense.
+        </p>
+      </div>
+
+      <button class="question" id="question8">Why didn’t my partner fight back or try to run away?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          There are a number of ways people may react to sexual assault — not a single “right” or “wrong” response. Sometimes, it’s easy to understand why a person is unable to fight back or run away; they could have been too intoxicated, drugged, or otherwise physically unable to do so. Sometimes a person makes a decision that fighting back is more dangerous, and they want to survive the assault with as little physical injury as possible; so, they comply or submit to the assailant, but that’s not the same thing as <a href="#" onclick="myFunc('question8','question4')">consent</a><br>
+          When met with a situation that threatens their survival or physical or emotional well-being, they often react with an automatic response designed to help. You might have heard of “fight or flight,” but it “fight, flight, freeze” more accurately captures the range of responses that a victim may have. In these situations, the brain triggers a release of hormones that affect our behavior. These can include the hormones that people often think of as stress hormones — the adrenaline that can make us feel “pumped up” and the cortisol that gives us energy. A surge of these hormones could result in fighting back or running away, if the victim is physically able to do so. There are also hormones that block pain, both physical and emotional, which can result in people feeling “out of it” or disconnected to the assault. Finally, there is also a hormone that causes positive feelings, which is another way to try to lessen the pain of the assault.<br>
+          When someone experiences traumatic, parts of the brain that are responsible for survival are activated. The part of the brain that you use to make logical or rational decisions is often compromised. The way someone responds — flight, fight, or freeze — is a hardwired, automatic response meant to help us survive a critical threat. It isn’t a matter of making a right choice or wrong choice, because it isn’t even a conscious decision.
+        </p>
+      </div>
+
+      <button class="question">The way my partner is talking about the assault seems odd or doesn’t make sense to me — why?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          Just like someone’s in-the-moment responses during the attack, there is no wrong way to respond after the assault. Some people cry or yell, while others speak calmly. People can appear anxious, confused, withdrawn, or disconnected. They may have no affect at all or even laugh — some of this goes back to the release of hormones.<br>
+          As they try to talk about the assault, instead of going chronologically through the event, they may “jump around” in time or remember new details. This is also a result of the trauma. Just as the hormone release associated with trauma can trigger an automatic behavioral response, it also interferes with memory. It does not mean the memories are false, just that the brain can’t store and retrieve them normally.
+        </p>
+      </div>
+
+      <button class="question">My partner is just not acting like themself. Is this because of the assault? When will they be over it?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          It can take a long time to heal from a traumatic event. The ways they react might not make sense. Some common responses to trauma include:<br>
+          •	feelings of guilt, shame, embarrassment, anger at self, self-blame<br>
+          •	acting like nothing happened – wanting to make everything go back to normal<br>
+          •	academic struggles and/or difficulty concentrating<br>
+          •	hypervigilance (extreme concern with their safety), jumpiness and/or a heightened startle response<br>
+          •	not wanting to be touched<br>
+          •	changes in eating, sleeping, or how they dress<br>
+          •	becoming socially withdrawn<br>
+          •	difficulty trusting people<br>
+          •	increased drinking or drug use<br>
+          •	engaging in self-injury or risky behaviors<br><br>
+          These behaviors are common — so, if you see your friend doing any of the above, try to be compassionate and understanding. That said, just because they are common doesn’t mean they are inevitable or should be ignored. If you are worried, encourage your friend to seek help.
+        </p>
+      </div>
+
+      <button class="question">Where can I learn more about trauma?</button>
+      <div class="drop-panel">
+        <p class="answer">
+          •	<b>Article: “Fight, flight or …freeze? Yes. freeze.”</b><br>
+          Rebecca Campbell, Ph.D., Professor of Psychology at Michigan State University.
+          <a href="http://www.joyfulheartfoundation.org/blog/talking-about-tonic-immobility-tonights-svu">http://www.joyfulheartfoundation.org/blog/talking-about-tonic-immobility-tonights-svu</a><br>
+
+          •	<b>Video of guest lecture by given to college students: “The Neurobiology of Trauma”</b><br>
+          Rebecca Campbell, Ph.D., Professor of Psychology at Michigan State University.
+          <a href="https://www.youtube.com/watch?v=mTOZE90-fCY">https://www.youtube.com/watch?v=mTOZE90-fCY</a><br>
+
+
+          •	<b>Blog: “Open Doors to Safety”</b> <br>
+          Linda Douglas, Trauma Specialist, NH Coalition Against Domestic and Sexual Violence, M.Ed., CTSS.
+          <a href="http://www.opendoorsnh.blogspot.com">www.opendoorsnh.blogspot.com</a><br>
+
+          •	<b>Book: Trauma and Recovery</b><br>
+          Judith Herman, M.D.
+          <a href="https://books.google.com/books/about/Trauma_and_Recovery.html?id=3cn2R0KenN0C">https://books.google.com/books/about/Trauma_and_Recovery.html?id=3cn2R0KenN0C</a>
+        </p>
+      </div>
+    </div>
+
+    <div id="quickEscapeDiv">
+      <a id="quickEscapeButton" href="https://weather.com/" class="list-item"><h1><span><img src="img/icons/no.png" alt="Timer Icon"></span></h1></a>
+    </div>
+
+    <script>
+    if(sessionStorage.getItem("helpfulAnswers") == "Survivor"){
+      var faq2 = document.getElementById('faq2');
+      faq2.parentNode.removeChild( faq2 );
+      var faq3 = document.getElementById('faq3');
+      faq3.parentNode.removeChild( faq3 );
+      var faq4 = document.getElementById('faq4');
+      faq4.parentNode.removeChild( faq4 );
+      var faq5 = document.getElementById('faq5');
+      faq5.parentNode.removeChild( faq5 );
+      var faq6 = document.getElementById('faq6');
+      faq6.parentNode.removeChild( faq6 );
+      var faq7 = document.getElementById('faq7');
+      faq7.parentNode.removeChild( faq7 );
+      document.getElementById("faq1").style.visibility="visible";
+    }
+    else if(sessionStorage.getItem("helpfulAnswers") == "Friend"){
+      var faq1 = document.getElementById('faq1');
+      faq1.parentNode.removeChild( faq1 );
+      var faq3 = document.getElementById('faq3');
+      faq3.parentNode.removeChild( faq3 );
+      var faq4 = document.getElementById('faq4');
+      faq4.parentNode.removeChild( faq4 );
+      var faq5 = document.getElementById('faq5');
+      faq5.parentNode.removeChild( faq5 );
+      var faq6 = document.getElementById('faq6');
+      faq6.parentNode.removeChild( faq6 );
+      var faq7 = document.getElementById('faq7');
+      faq7.parentNode.removeChild( faq7 );
+      document.getElementById("faq2").style.visibility="visible";
+    }
+    else if(sessionStorage.getItem("helpfulAnswers") == "Family"){
+      var faq1 = document.getElementById('faq1');
+      faq1.parentNode.removeChild( faq1 );
+      var faq2 = document.getElementById('faq2');
+      faq2.parentNode.removeChild( faq2 );
+      var faq4 = document.getElementById('faq4');
+      faq4.parentNode.removeChild( faq4 );
+      var faq5 = document.getElementById('faq5');
+      faq5.parentNode.removeChild( faq5 );
+      var faq6 = document.getElementById('faq6');
+      faq6.parentNode.removeChild( faq6 );
+      var faq7 = document.getElementById('faq7');
+      faq7.parentNode.removeChild( faq7 );
+      document.getElementById("faq3").style.visibility="visible";
+    }
+    else if(sessionStorage.getItem("helpfulAnswers") == "Faculty or Staff"){
+      var faq1 = document.getElementById('faq1');
+      faq1.parentNode.removeChild( faq1 );
+      var faq2 = document.getElementById('faq2');
+      faq2.parentNode.removeChild( faq2 );
+      var faq3 = document.getElementById('faq3');
+      faq3.parentNode.removeChild( faq3 );
+      var faq5 = document.getElementById('faq5');
+      faq5.parentNode.removeChild( faq5 );
+      var faq6 = document.getElementById('faq6');
+      faq6.parentNode.removeChild( faq6 );
+      var faq7 = document.getElementById('faq7');
+      faq7.parentNode.removeChild( faq7 );
+      document.getElementById("faq4").style.visibility="visible";
+    }
+    else if(sessionStorage.getItem("helpfulAnswers") == "Off-Campus Community Member"){
+      var faq1 = document.getElementById('faq1');
+      faq1.parentNode.removeChild( faq1 );
+      var faq2 = document.getElementById('faq2');
+      faq2.parentNode.removeChild( faq2 );
+      var faq3 = document.getElementById('faq3');
+      faq3.parentNode.removeChild( faq3 );
+      var faq4 = document.getElementById('faq4');
+      faq4.parentNode.removeChild( faq4 );
+      var faq6 = document.getElementById('faq6');
+      faq6.parentNode.removeChild( faq6 );
+      var faq7 = document.getElementById('faq7');
+      faq7.parentNode.removeChild( faq7 );
+      document.getElementById("faq5").style.visibility="visible";
+    }
+    else if(sessionStorage.getItem("helpfulAnswers") == "Prospective Student"){
+      var faq1 = document.getElementById('faq1');
+      faq1.parentNode.removeChild( faq1 );
+      var faq2 = document.getElementById('faq2');
+      faq2.parentNode.removeChild( faq2 );
+      var faq3 = document.getElementById('faq3');
+      faq3.parentNode.removeChild( faq3 );
+      var faq4 = document.getElementById('faq4');
+      faq4.parentNode.removeChild( faq4 );
+      var faq5 = document.getElementById('faq5');
+      faq5.parentNode.removeChild( faq5 );
+      var faq7 = document.getElementById('faq7');
+      faq7.parentNode.removeChild( faq7 );
+      document.getElementById("faq6").style.visibility="visible";
+    }
+    else if(sessionStorage.getItem("helpfulAnswers") == "Supportive Partner"){
+      var faq1 = document.getElementById('faq1');
+      faq1.parentNode.removeChild( faq1 );
+      var faq2 = document.getElementById('faq2');
+      faq2.parentNode.removeChild( faq2 );
+      var faq3 = document.getElementById('faq3');
+      faq3.parentNode.removeChild( faq3 );
+      var faq4 = document.getElementById('faq4');
+      faq4.parentNode.removeChild( faq4 );
+      var faq5 = document.getElementById('faq5');
+      faq5.parentNode.removeChild( faq5 );
+      var faq6 = document.getElementById('faq6');
+      faq6.parentNode.removeChild( faq6 );
+      document.getElementById("faq7").style.visibility="visible";
+    }
+
+
+    </script>
+
+  </div>
+
+  <script src="cordova.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/jquery-2.2.4.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dropdown.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/displayData.js"></script>
+  <script>
+  if (sessionStorage.getItem("whatNowBackPage") == "whatNowGroup2_1.html" || sessionStorage.getItem("whatNowBackPage") == "whatNowGroup2_2.html" ){
+    $("#testButton").trigger('click');
+    $('html, body').animate({ scrollTop: $('#hospital').offset().top }, 'slow');
+  }
+
+  var myFunc = function (close,open) {
+    $("#" + close).trigger('click');
+    $("#" + open).trigger('click');
+    // since consent question is the second question, we need to scroll all the way to the top, because putting a tab index div above the first question doesnt scroll us up enough
+    if ((sessionStorage.getItem("helpfulAnswers") == "Family") || (sessionStorage.getItem("helpfulAnswers") == "Faculty or Staff") || (sessionStorage.getItem("helpfulAnswers") == "Off-Campus Community Member"))
+    window.scrollTo(0,0);
+    else
+    $('html, body').animate({ scrollTop: $('#' + open + 'Focus').offset().top }, 'slow');
+  };
+
+  //var word = localStorage.getItem("collegeHeader");
+  //document.getElementById("collegeHeader").innerHTML = word.replace(/\s*\(.*?\)\s*/g, '');
+
+  document.addEventListener("backbutton", onBackKeyDown, false);
+
+  function onBackKeyDown() {
+
+  }
+  </script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-84030024-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+</body>
+
+</html>

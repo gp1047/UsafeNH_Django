@@ -58,7 +58,7 @@
   
     mobileDiv = document.querySelector("#mobile");
 
-    c = c.sort(cSort);
+    //c = c.sort(cSort);
     /* Retriving phoneNumbers */
     for(var i=0, len=c.length; i<len; i++) {
       if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
@@ -66,11 +66,11 @@
       }
     }
   };
-  var cSort = function(a, b) {
-    var aName = a.name.givenName + ' ' + a.name.familyName;
-    var bName = b.name.givenName + ' ' + a.name.familyName;
-    return aName < bName ? -1 : (aName == bName ? 0 : 1);
-  };
+  <!-- var cSort = function(a, b) { -->
+    <!-- var aName = a.name.givenName + ' ' + a.name.familyName; -->
+    <!-- var bName = b.name.givenName + ' ' + a.name.familyName; -->
+    <!-- return aName < bName ? -1 : (aName == bName ? 0 : 1); -->
+  <!-- }; -->
   function onError(contactError) {
     console.log(contactError);
   };

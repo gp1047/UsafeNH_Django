@@ -9,6 +9,7 @@
     </author>
     <icon src="www/icon.png" />
     <content src="welcome.html" />
+	
 	<preference name="orientation" value="portrait"/>
     <plugin name="cordova-plugin-contacts" spec="2.0.1" />
     <plugin name="cordova-plugin-dialogs" spec="1.2.1" />

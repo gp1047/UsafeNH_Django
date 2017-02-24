@@ -40,7 +40,7 @@
         uSafeNH Team
     </author>
     <icon src="www/icon.png" />
-    <content src="welcome.html" />
+    <content src="www/welcome.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

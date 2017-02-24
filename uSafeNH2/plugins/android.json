@@ -24,9 +24,6 @@
         },
         "cordova-custom-config": {
             "PACKAGE_NAME": "com.unh.usafenh"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.unh.usafenh"
         }
     },
     "dependent_plugins": {

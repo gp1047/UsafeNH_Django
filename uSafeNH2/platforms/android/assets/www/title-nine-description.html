@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<html ng-app="myModule">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=yes">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+  <!-- Good default declaration:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+  * Enable inline JS: add 'unsafe-inline' to default-src
+  * Enable eval(): add 'unsafe-eval' to default-src
+  * Create your own at http://cspisawesome.com
+-->
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+<!--link rel="stylesheet" type="text/css" href="css/index.css" /-->
+
+<title>Title IX Description</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,100,700">
+
+</head>
+
+<body ng-controller="AppCtrl">
+
+  <a class="back animated fadeInDown" href="titleNine.html"><img src="img/icons/back.png" alt="Back"></a>
+  <a class="close" href=""><img src="img/icons/close.png" alt="Close"></a>
+
+
+  <div class="header">
+    <div class="animated fadeInDown">
+      <p id="collegeHeader" ng-repeat="x in data" ng-if="x.collegeID == returnSchool()" ng-cloak>{{x.collegeName}}</p>
+      <h1>Title IX</h1>
+    </div>
+  </div>
+
+  <div class="wrapper">
+
+    <div class="list offset-160 animated fadeInLeft">
+
+      <p>Your college’s Title IX Coordinator is the person who your college has designated to ensure compliance with Title IX. Though other staff members may be involved in the process. The Title IX Coordinator ensures that all cases are handled properly, in a prompt and equitable manner. Your college must also ensure that you can access educational programs and activities safely.</p>
+      <br>
+
+      <br>
+
+      <b><p>The Title IX Coordinator (or their designee) will:</p></b>
+
+      <br>
+
+      <p>• present you with your options for reporting on- and off-campus;
+
+        <br>
+
+        • refer you to resources that can help you through the process;
+
+        <br>
+
+        • keep you notified as the case progresses; and
+        <br>
+        • offer to implement “interim relief measures” before the final outcome of your case is determined.</p>
+
+        <br>
+
+        <p>The exact interim measures that are available to you will depend upon the circumstances of your case, your school’s policy, and the options you pursue regarding an investigation. Examples may include: changes in: residence, academic schedule, sports and extracurricular activities, work study or campus job assignments, and/or other aspects of your life on campus. Title IX Coordinators can also issue an administrative “no contact order.”</p>
+        <br>
+        <p>You may request confidentiality, but the Title IX Coordinator must balance your request with the school’s responsibility to keep all students safe.</p>
+        <br>
+
+        <p><b>What is Title IX?</b></p>
+        <br>
+        <p>Title IX is part of the Educational Amendments that protects students from discrimination on the basis of gender in all educational institutions that receive federal funding. This includes discrimination in the context of sports, other college programs or activities and in the form of sexual harassment, and sexual violence.</p>
+        <br>
+
+        <p><b>What must my college do to be compliant with Title IX?</b></p>
+        <br>
+        <p>There are a few things your school must do before they even receive a report of sexual violence. This includes writing and disseminating a non-discrimination policy, designating a Title IX Coordinator to ensure compliance, and establishing policies and procedures to address acts of sexual violence. There is federal guidance addressing some of what must be included in the policy and procedures.</p>
+        <br>
+        <p>Once the school is “on notice” of sexual violence, harassment, or discrimination, they must have a prompt and equitable process. “On notice” means the school knew or “reasonably should have known” that sexual violence was occurred. School officials must take immediate action to ensure that you can continue your education. Schools may not retaliate against someone filing a report and must keep a victim safe from other retaliation.</p>
+        <br>
+
+        <p><b>If the assault is reported, what will the school do next?</b></p>
+        <br>
+        <p>Schools must take immediate action to address all reports of sexual violence. This often includes an investigation and some type of adjudication or conduct hearing. Schools have different policies and procedures established for how they proceed with a case. In addition to a hearing or investigation, the school must make sure that you can pursue your education safely and free of ongoing harassment, discrimination, or violence. There are a number of remedies or safety measures the school can implement. During the investigation and adjudication process, before the final decision is made, they can implement what are often called “interim relief measures.” These measures can include (but are not limited to) changes in housing, class or sports schedule, work-study or campus job assignment, or extracurricular activities and clubs. These accommodations should not pose an undue (including financial) burden to you. However, to the measures available to you will depend on the circumstances of your case, your school’s policy, and the choices you make regarding a formal complaint process. The school can also implement an administrative No Contact order, barring the person who assaulted you from having contact with you.</p>
+        <br>
+        <p>Once the final outcome of your case is determined, these measures may or may not continue depending on the finding and any sanctions that might be imposed.</p>
+        <br>
+        <p>At the beginning of this process, your school should present you with multiple options, including the option to file a formal complaint or providing you with other forms of assistance. You may request confidentiality, but your school will also have to consider its responsibility to ensure that your campus community is safe and free of gender-based discrimination.</p>
+        <br>
+        <p>They should also inform you of off-campus options and resources, including getting medical attention, reporting to police, and contacting the local crisis center. There are many differences between an on-campus response and an off-campus criminal justice system response. It is your choice to pursue one, both, or neither. A crisis advocate can help you understand these options.</p>
+        <br>
+
+        <p><b>What is the Title IX Coordinator’s Role?</b></p>
+        <br>
+        <p>The Title IX Coordinator is responsible for ensuring the school’s compliance with Title IX. Each school takes a different approach to defining the exact roles and responsibilities of the Title IX Coordinator and other staff working closely with the coordinator. Your school’s procedure for responding to reports of sexual assault might include the following staff: campus safety/security, Title IX Investigator, Title IX Deputy Coordinator, Dean of Student’s Office, and/or officials from other offices tasked with ensuring equity and/or enforcing community standards.</p>
+        <br>
+
+        <p><b>How can I learn more about my college’s responsibility address sexual assault?</b></p>
+        <br>
+        <p><a href="http://www.notalone.gov">notalone.gov</a></p>
+        <p><a href="http://www.knowyourix.org">knowyourix.org</a></p>
+        <p><a href="http://www.clerycenter.org">clerycenter.org</a></p>
+        <br>
+
+
+      </div>
+
+      <div id="quickEscapeDiv">
+        <a id="quickEscapeButton" href="https://weather.com/" class="list-item"><h1><span><img src="img/icons/no.png" alt="Timer Icon"></span></h1></a>
+      </div>
+
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/displayData.js"></script>
+    <script>
+    //var word = localStorage.getItem("collegeHeader");
+    //document.getElementById("collegeHeader").innerHTML = word.replace(/\s*\(.*?\)\s*/g, '');
+    </script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-84030024-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+
+  </html>

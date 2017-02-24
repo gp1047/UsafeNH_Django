@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<html ng-app="myModule">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=yes">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+  <!-- Good default declaration:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+  * Enable inline JS: add 'unsafe-inline' to default-src
+  * Enable eval(): add 'unsafe-eval' to default-src
+  * Create your own at http://cspisawesome.com
+-->
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+<!--link rel="stylesheet" type="text/css" href="css/index.css" /-->
+
+<title>Police Station</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,100,700">
+
+<script src="js/angular.min.js"></script>
+<script src="js/displayData.js"></script>
+</head>
+
+<body ng-controller="AppCtrl">
+
+  <a class="back animated fadeInDown" id="backButton" href="resources.html"><img src="img/icons/back.png" alt="Back"></a>
+  <script type="text/javascript">
+  if(sessionStorage.getItem("whatNowBackPage") != null)
+  document.getElementById("backButton").href = sessionStorage.getItem("whatNowBackPage");
+  </script>
+  <a class="close" href=""><img src="img/icons/close.png" alt="Close"></a>
+
+  <div class="header">
+    <div class="animated fadeInDown">
+      <p id="collegeHeader" ng-repeat="x in data" ng-if="x.collegeID == returnSchool()" ng-cloak>{{x.collegeName}}</p>
+      <h1>Police Stations</h1>
+    </div>
+  </div>
+
+  <div class="wrapper">
+
+    <div class="list offset-160 animated fadeInLeft">
+
+      <p id="screen-description" onclick="toggle_visibility('more');">Sexual assaults should be reported to the police department that has jurisdiction (i.e., the police department in the town/city where the assault took place). <a id="learn-more" href="#">Learn more...</a>
+        <span id="more">You may go directly to your local hospital and ask to speak with an officer. If you do not wish to go to the hospital, an officer can meet with you in a safe place to take a brief, initial report. The officer may also encourage you to seek medical attention to ensure that you receive proper care and follow-up. It is your right to have a confidential advocate from your local crisis center accompany you to either the local police department or hospital.</span></p>
+
+        <!-- resource start -->
+
+        <div class="resource" ng-repeat="x in data" ng-if="x.collegeID == returnSchool()" ng-cloak>
+
+          <!-- resource header & icon -->
+
+          <div class="list-item question" ng-click="showDetails = ! showDetails"><h1>{{x.policeDepartment}}</h1></div>
+
+          <!-- resource data -->
+
+          <div ng-show="showDetails">
+
+            <!-- on or off campus -->
+
+            <p class="resource-title"><img src="img/icons/location.png" alt="Icon">Is it on or off campus?</p>
+            <p class="resource-content">{{x.policeCampus}}</p>
+
+            <!-- phone number -->
+
+            <p class="resource-title"><img src="img/icons/phone.png" alt="Icon">Phone Number</p>
+            <a href="tel:{{x.policePhoneNumber}}" target="_blank"><p class="resource-content">{{x.policePhoneNumber}}</p></a>
+
+            <!-- location -->
+
+            <p class="resource-title"><img src="img/icons/location.png" alt="Icon">Location</p>
+            <a href="http://maps.google.com/?q={{x.policeAddress}}" target="_blank"><p class="resource-content">{{x.policeAddress}}</p></a>
+
+          </div>
+
+        </div>
+
+        <!-- resource end -->
+
+        <!-- resource start -->
+
+        <div class="resource" ng-repeat="x in data" ng-if="x.collegeID == returnSchool()" ng-show="x.policeDepartment2" ng-cloak>
+
+          <!-- resource header & icon -->
+
+          <div class="list-item question" ng-click="showDetails = ! showDetails"><h1>{{x.policeDepartment2}}</h1></div>
+
+          <!-- resource data -->
+
+          <div ng-show="showDetails">
+
+            <!-- on or off campus -->
+
+            <p class="resource-title"><img src="img/icons/location.png" alt="Icon">Is it on or off campus?</p>
+            <p class="resource-content">{{x.policeCampus2}}</p>
+
+            <!-- phone number -->
+
+            <p class="resource-title"><img src="img/icons/phone.png" alt="Icon">Phone Number</p>
+            <a href="tel:{{x.policePhoneNumber}}" target="_blank"><p class="resource-content">{{x.policePhoneNumber2}}</p></a>
+
+            <!-- location -->
+
+            <p class="resource-title"><img src="img/icons/location.png" alt="Icon">Location</p>
+            <a href="http://maps.google.com/?q={{x.policeAddress}}" target="_blank"><p class="resource-content">{{x.policeAddress2}}</p></a>
+
+          </div>
+
+        </div>
+
+        <!-- resource end -->
+
+        <!-- only show Durham Police Deprtment and Plymouth State Police Department unde the police resource -->
+
+        <!-- resource start -->
+
+        <div class="resource" ng-repeat="x in data" ng-if="x.collegeID == returnSchool() && x.collegeName == 'University of New Hampshire (Durham)' ||x.collegeID == returnSchool() && x.collegeName == 'Plymouth State University'">
+
+          <!-- resource header & icon -->
+
+          <div class="list-item question" ng-click="showDetails = ! showDetails"><h1>{{x.csName}}</h1></div>
+
+          <!-- resource data -->
+
+          <div ng-show="showDetails">
+
+            <!-- On or off campus -->
+            <p class="resource-title"><img src="img/icons/location.png" alt="Icon">Is it on or off campus?</p>
+            <p class="resource-content">{{x.csCampus}}</p>
+
+            <!-- email -->
+            <div ng-show="x.csEmail">
+              <p class="resource-title"><img src="img/icons/email.png" alt="Icon">Email</p>
+              <a href="mailto:{{x.csEmail}}" target="_blank"><p class="resource-content">{{x.csEmail}}</p></a>
+            </div>
+
+            <!-- phone number -->
+            <div ng-show="x.csPhoneNumber">
+              <p class="resource-title"><img src="img/icons/phone.png" alt="Icon">Phone Number</p>
+              <a href="tel:{{x.csPhoneNumber}}" target="_blank"><p class="resource-content"><b>{{x.csPhoneType}}</b> {{x.csPhoneNumber}} {{x.csPhoneExt}}</p></a>
+              <div ng-show="x.csPhoneNumber2">
+                <a href="tel:{{x.csPhoneNumber2}}" target="_blank"><p class="resource-content"><b>{{x.csPhoneType2}}</b> {{x.csPhoneNumber2}} {{x.csPhoneExt2}}</p></a>
+              </div>
+              <div ng-show="x.csPhoneNumber3">
+                <a href="tel:{{x.csPhoneNumber3}}" target="_blank"><p class="resource-content"><b>{{x.csPhoneType3}}</b> {{x.csPhoneNumber3}} {{x.csPhoneExt3}}</p></a>
+              </div>
+            </div>
+
+            <!-- location (if the location does appear on google maps, we want to link it-->
+            <div ng-show="x.csLocation && x.csRealLocation == 'yes'">
+              <p class="resource-title"><img src="img/icons/location.png" alt="Icon">Location</p>
+              <a href="http://maps.google.com/?q={{x.csLocation}}" target="_blank"><p class="resource-content">{{x.csLocation}}</p></a>
+            </div>
+
+            <!-- location (if the location does not appear on google maps, we just want to display where it is on campus)-->
+            <div ng-show="x.csLocation && x.csRealLocation == 'no'">
+              <p class="resource-title"><img src="img/icons/location.png" alt="Icon">Location</p>
+              <p class="resource-content">{{x.csLocation}}</p>
+            </div>
+
+
+            <!-- website -->
+            <div ng-show="x.csWebsite">
+              <p class="resource-title"><img src="img/icons/link.png" alt="Icon">Website</p>
+              <a href="{{x.csWebsite}}" target="_blank"><p class="resource-content">{{x.csWebsite}}</p></a>
+            </div>
+            <!-- report online -->
+            <div ng-show="x.csReportOnline1">
+              <p class="resource-title"><img src="img/icons/link.png" alt="Icon">Report Online</p>
+              <a href="{{x.csReportOnline1}}" target="_blank"><p class="resource-content"><b>{{x.csReportOnlineType1}}</b> {{x.csReportOnline1}}</p></a>
+              <div ng-show="x.csReportOnline2">
+                <a href="{{x.csReportOnline2}}" target="_blank"><p class="resource-content"><b>{{x.csReportOnlineType2}}</b> {{x.csReportOnline2}}</p></a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- resource end -->
+
+      </div>
+
+      <div id="quickEscapeDiv">
+        <a id="quickEscapeButton" href="https://weather.com/" class="list-item"><h1><span><img src="img/icons/no.png" alt="Timer Icon"></span></h1></a>
+      </div>
+
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    //var word = localStorage.getItem("collegeHeader");
+    //document.getElementById("collegeHeader").innerHTML = word.replace(/\s*\(.*?\)\s*/g, '');
+    </script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-84030024-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+
+  </html>

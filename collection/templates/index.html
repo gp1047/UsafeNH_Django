@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+    Homepage - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    {% for thing in things %}
+    {% if user == thing.user %}
+      <h2>
+          <a href="{% url 'thing_detail' slug=thing.slug %}">
+              {{ thing.name }}
+          </a>
+      </h2>
+      <p>{{ thing.description }}</p>
+    {% endif %}
+    {% endfor %}
+{% endblock content %}

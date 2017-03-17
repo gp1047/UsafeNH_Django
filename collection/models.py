@@ -17,4 +17,4 @@ class Hospital(models.Model):
     hospitalDirections = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     user = models.ForeignKey(User, related_name='Hospital', null=True)
-    college = models.ForeignKey(College.collegeName, related_name='Hospital', null=True)
+    college = models.ForeignKey(College, related_name='Hospital', null=True)

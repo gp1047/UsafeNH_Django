@@ -7,7 +7,7 @@
     {% for college in colleges %}
     {% if user == college.user %}
       <h2>
-          <a href="{% url 'thing_detail' slug=thing.slug %}">
+          <a href="{% url 'thing_detail' slug=college.slug %}">
               {{ college.collegeName }}
           </a>
       </h2>

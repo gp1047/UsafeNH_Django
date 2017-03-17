@@ -1,8 +1,14 @@
 from django.forms import ModelForm
 
-from collection.models import Thing
+from collection.models import College
+from collection.models import Hospital
 
-class ThingForm(ModelForm):
+class CollegeForm(ModelForm):
     class Meta:
-        model = Thing
-        fields = ('name', 'description',)
+        model = College
+        fields = ('collegeName', 'collegeAddress', 'collegeTown',)
+
+class HospitalForm(ModelForm):
+    class Meta:
+        model = Hospital
+        fields = ('hospitalName', 'hospitalAddress', 'hospitalPhoneNumber', 'hospitalDirections',)

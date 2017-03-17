@@ -4,14 +4,15 @@
 {% endblock title %}
 
 {% block content %}
-    {% for thing in things %}
-    {% if user == thing.user %}
+    {% for college in colleges %}
+    {% if user == college.user %}
       <h2>
           <a href="{% url 'thing_detail' slug=thing.slug %}">
-              {{ thing.name }}
+              {{ college.collegeName }}
           </a>
       </h2>
-      <p>{{ thing.description }}</p>
+      <p>{{ college.collegeAddress }}</p>
+      <p>{{ college.collegeTown }}</p>
     {% endif %}
     {% endfor %}
 {% endblock content %}

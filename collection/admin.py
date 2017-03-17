@@ -2,13 +2,20 @@ from django.contrib import admin
 
 # Register your models here.
 # import your model
-from collection.models import Thing
+from collection.models import College
+from collection.models import Hospital
 
 # set up automated slug creation
-class ThingAdmin(admin.ModelAdmin):
-    model = Thing
-    list_display = ('name', 'description',)
-    prepopulated_fields = {'slug': ('name',)}
+class CollegeAdmin(admin.ModelAdmin):
+    model = College
+    list_display = ('collegeName', 'collegeAddress', 'collegeTown',)
+    prepopulated_fields = {'slug': ('collegeName',)}
+
+class HospitalAdmin(admin.ModelAdmin):
+    model = Hospital
+    list_display = ('hospitalName', 'hospitalAddress', 'hospitalPhoneNumber', 'hospitalDirections',)
+    prepopulated_fields = {'slug': ('hospitalName',)}
 
 # and register it
-admin.site.register(Thing, ThingAdmin)
+admin.site.register(College, CollegeAdmin)
+admin.site.register(Hospital, HospitalAdmin)

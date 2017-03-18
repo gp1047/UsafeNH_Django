@@ -10,6 +10,12 @@ class College(models.Model):
     slug = models.SlugField(unique=True)
     user = models.ForeignKey(User, related_name='College', null=True)
 
+    def __str__(self):
+        """
+        String for representing the Model object (in Admin site etc.)
+        """
+        return self.collegeName
+
 class Hospital(models.Model):
     hospitalName = models.CharField(max_length=255)
     hospitalAddress = models.CharField(max_length=255)

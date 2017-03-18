@@ -15,6 +15,5 @@ class Hospital(models.Model):
     hospitalAddress = models.CharField(max_length=255)
     hospitalPhoneNumber = models.CharField(max_length=255)
     hospitalDirections = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True)
     user = models.ForeignKey(User, related_name='Hospital', null=True)
     college = models.ForeignKey(College, related_name='Hospital', null=True)

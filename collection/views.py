@@ -1,20 +1,24 @@
 from django.shortcuts import render, redirect
 from django.template.defaultfilters import slugify
 from collection.forms import CollegeForm
-from collection.models import College
+from collection.models import College, Hospital
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from django.contrib.auth.models import User
+
 
 # the rewritten view!
 def index(request):
     colleges = College.objects.all()
+    hospitals = Hospital.objects.all()
 
     return render(request, 'index.html', {
         'colleges': colleges,
+        'hospitals': hospitals,
     })
 
 # our new view
-def thing_detail(request, slug):
+def thing_detail(request, slug,):
     # grab the object...
     college = College.objects.get(slug=slug)
 

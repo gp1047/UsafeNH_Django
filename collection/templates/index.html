@@ -7,12 +7,25 @@
     {% for college in colleges %}
     {% if user == college.user %}
       <h2>
-          <a href="{% url 'thing_detail' slug=college.slug %}">
+          <a href="{% url 'thing_detail' slug=college.slug%}">
               {{ college.collegeName }}
           </a>
       </h2>
       <p>{{ college.collegeAddress }}</p>
       <p>{{ college.collegeTown }}</p>
+    {% endif %}
+    {% endfor %}
+
+    {% for hospital in hospitals %}
+    {% if user == hospital.user %}
+      <h2>
+
+              {{ hospital.hospitalName }}
+
+      </h2>
+      <p>{{ hospital.hospitalAddress }}</p>
+      <p>{{ hospital.hospitalPhoneNumber }}</p>
+      <p>{{ hospital.hospitalDirections }}</p>
     {% endif %}
     {% endfor %}
 {% endblock content %}

@@ -14,7 +14,6 @@ class CollegeAdmin(admin.ModelAdmin):
 class HospitalAdmin(admin.ModelAdmin):
     model = Hospital
     list_display = ('hospitalName', 'hospitalAddress', 'hospitalPhoneNumber', 'hospitalDirections',)
-    prepopulated_fields = {'slug': ('hospitalName',)}
 
 # and register it
 admin.site.register(College, CollegeAdmin)

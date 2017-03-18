@@ -7,6 +7,10 @@
     <h1>{{ college.collegeName }}</h1>
     <p>{{ college.collegeAddress }}</p>
     <p>{{ college.collegeTown }}</p>
+    <p>{{ hospital.hospitalName }}</p>
+    <p>{{ hospital.hospitalAddress }}</p>
+    <p>{{ hospital.hospitalDirections }}</p>
+    <p>{{ hospital.hospitalPhoneNumber }}</p>
     {% if user == college.user %}
         <p>
             <a href="{% url 'edit_thing' slug=college.slug %}">

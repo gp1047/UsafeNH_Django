@@ -10,11 +10,9 @@ from django.contrib.auth.models import User
 # the rewritten view!
 def index(request):
     colleges = College.objects.all()
-    hospitals = Hospital.objects.all()
 
     return render(request, 'index.html', {
         'colleges': colleges,
-        'hospitals': hospitals,
     })
 
 # our new view
@@ -31,38 +29,30 @@ def thing_detail(request, slug, ):
 def edit_thing(request, slug):
     # grab the object
     college = College.objects.get(slug=slug)
-    hospital = Hospital.objects.get(user=request.user)
 
     if college.user != request.user:
         raise Http404
 
     # set the form we're using
     form_class = CollegeForm
-    form_class2 = HospitalForm
 
     # if we're coming to this view from a submitted form
     if request.method == 'POST':
         # grab the data from the submitted form and apply to
         # the form
         form = form_class(data=request.POST, instance=college)
-        form2 = form_class2(data=request.POST, instance=hospital)
 
-        if form.is_valid and form2.is_valid():
+        if form.is_valid():
             # save the new data
             form.save()
-            form2.save()
             return redirect('thing_detail', slug=college.slug)
     # otherwise just create the form
     else:
         form = form_class(instance=college)
-        form2 = form_class2(instance=hospital)
-
     # and render the template
     return render(request, 'things/edit_thing.html', {
         'college': college,
-        'hospital': hospital,
         'form': form,
-        'form2': form2,
     })
 
 def create_thing(request):

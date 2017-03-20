@@ -21,9 +21,11 @@ def index(request):
 def thing_detail(request, slug,):
     # grab the object...
     college = College.objects.get(slug=slug)
+    hospitals = Hospital.objects.all()
     # and pass to the template
     return render(request, 'things/thing_detail.html', {
         'college': college,
+        'hospitals': hospitals,
     })
 
 # add below your thing_detail view

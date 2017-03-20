@@ -21,5 +21,5 @@ class Hospital(models.Model):
     hospitalAddress = models.CharField(max_length=255)
     hospitalPhoneNumber = models.CharField(max_length=255)
     hospitalDirections = models.CharField(max_length=255)
-    user = models.ForeignKey(User, related_name='Hospital', null=True)
+    user = models.ManyToManyField(User)
     college = models.ManyToManyField(College)

@@ -4,18 +4,15 @@
 {% endblock title %}
 
 {% block content %}
+
     <h1>{{ college.collegeName }}</h1>
     <p>{{ college.collegeAddress }}</p>
     <p>{{ college.collegeTown }}</p>
 
-
-    {% for hospital in hospitals %}
-      <h1>{{ hospital.hospitalName }}</h1>
-      <p>{{ hospital.hospitalAddress }}</p>
-      <p>{{ hospital.hospitalDirections }}</p>
-      <p>{{ hospital.hospitalPhoneNumber }}</p>
+    {% for hospitals in college.hospital.all %}
+      <p>{{ hospitals.hospitalName }}</p>
     {% endfor %}
-
+    
     {% if user == college.user %}
         <p>
             <a href="{% url 'edit_thing' slug=college.slug %}">

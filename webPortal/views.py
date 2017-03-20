@@ -18,10 +18,10 @@ def index(request):
     })
 
 # our new view
-def thing_detail(request, slug,):
+def thing_detail(request, slug, ):
     # grab the object...
     college = College.objects.get(slug=slug)
-    hospitals = Hospital.objects.all()
+    hospitals = Hospital.objects.filter(user=request.user)
     # and pass to the template
     return render(request, 'things/thing_detail.html', {
         'college': college,

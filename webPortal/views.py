@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.template.defaultfilters import slugify
-from webPortal.forms import CollegeForm, HospitalForm
+from webPortal.forms import CollegeForm, HospitalForm, HospitalFormSet
 from webPortal.models import College, Hospital
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
@@ -37,15 +37,14 @@ def edit_thing(request, slug):
 
     # set the form we're using
     form_class = CollegeForm
-    form_class2 = HospitalForm
+    form_class2 = HospitalFormSet
 
     # if we're coming to this view from a submitted form
     if request.method == 'POST':
         # grab the data from the submitted form and apply to
         # the form
         form = form_class(data=request.POST, instance=college)
-        for hos in hospital:
-            form2 = form_class2(data=request.POST, instance=hos)
+        form2 = form_class2(data=request.POST)
 
         if form.is_valid and form2.is_valid():
             # save the new data
@@ -55,8 +54,7 @@ def edit_thing(request, slug):
     # otherwise just create the form
     else:
         form = form_class(instance=college)
-        for hos in hospital:
-            form2 = form_class2(instance=hos)
+        form2 = form_class2()
 
     # and render the template
     return render(request, 'things/edit_thing.html', {

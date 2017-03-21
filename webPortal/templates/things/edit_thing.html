@@ -10,7 +10,14 @@
         {{ form.as_p }}
     <h1>Edit "{{ hospital.hospitalName }}"</h1>
         {% csrf_token %}
-        {{ form2.as_p }}
+        {{ formset.management_form }}
+         <table>
+           {% for form in form2 %}
+           {% if user == college.user %}
+            {{ form }}
+           {% endif %}
+           {% endfor %}
+         </table>
         <button type="submit">Submit</button>
     </form>
 {% endblock content %}

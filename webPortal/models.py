@@ -19,7 +19,7 @@ class College(models.Model):
     collegeTown = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     user = models.ForeignKey(User, related_name='College', null=True)
-    hospital = models.ManyToManyField(Hospital, related_name='Hospital', null=True)
+    hospital = models.ManyToManyField(Hospital, related_name='Hospital')
     def __str__(self):
         """
         String for representing the Model object (in Admin site etc.)

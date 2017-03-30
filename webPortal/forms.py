@@ -6,7 +6,7 @@ from webPortal.models import Hospital
 class CollegeForm(ModelForm):
     class Meta:
         model = College
-        fields = ('collegeName', 'collegeAddress', 'collegeTown','hospital',)
+        fields = ('collegeName', 'collegeAddress', 'collegeTown',)
 
 class HospitalForm(ModelForm):
     class Meta:

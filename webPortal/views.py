@@ -29,8 +29,6 @@ def thing_detail(request, slug, ):
 def edit_thing(request, slug):
     # grab the object
     college = College.objects.get(slug=slug)
-    #hospital = Hospital.objects.all()
-    hospital = Hospital.objects.filter(Hospital = college)
 
     if college.user != request.user:
         raise Http404
@@ -46,7 +44,7 @@ def edit_thing(request, slug):
         form = form_class(data=request.POST, instance=college)
         form2 = form_class2(data=request.POST)
 
-        if form.is_valid and form2.is_valid():
+        if form.is_valid and form2.is_valid:
             # save the new data
             form.save()
             form2.save()
@@ -59,7 +57,6 @@ def edit_thing(request, slug):
     # and render the template
     return render(request, 'things/edit_thing.html', {
         'college': college,
-        'hospital': hospital,
         'form': form,
         'form2': form2,
     })

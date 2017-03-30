@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+    Homepage - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    {% for college in colleges %}
+    {% if user == college.user %}
+      <h2>
+          <a href="{% url 'thing_detail' slug=college.slug%}">
+              {{ college.collegeName }}
+          </a>
+      </h2>
+      <p>{{ college.collegeAddress }}</p>
+      <p>{{ college.collegeTown }}</p>
+    {% endif %}
+    {% endfor %}
+{% endblock content %}

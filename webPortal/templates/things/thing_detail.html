@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ college.collegeName }} - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+
+    <h1>{{ college.collegeName }}</h1>
+    <p>{{ college.collegeAddress }}</p>
+    <p>{{ college.collegeTown }}</p>
+
+    {% for hospitals in college.hospital.all %}
+      <p>{{ hospitals.hospitalName }}</p>
+    {% endfor %}
+
+    {% if user == college.user %}
+        <p>
+            <a href="{% url 'edit_thing' slug=college.slug %}">
+                Edit me!
+            </a>
+        </p>
+    {% endif %}
+{% endblock content %}
